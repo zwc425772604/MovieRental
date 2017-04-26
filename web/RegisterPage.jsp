@@ -13,7 +13,7 @@
         if(document.form1.Radio1.checked)
            window.open("CustomerRegistration.jsp","_self");
         else
-           window.open("EmployeeRegistration.htm","_self");
+           window.open("EmployeeRegistration.jsp","_self");
         }
     </script>
 </head>
