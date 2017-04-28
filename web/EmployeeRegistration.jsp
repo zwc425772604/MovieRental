@@ -1,14 +1,14 @@
 <%-- 
-    Document   : CustomerRegistration
-    Created on : Apr 25, 2017, 11:54:46 PM
+    Document   : EmployeeRegistration
+    Created on : Apr 27, 2017, 10:54:37 PM
     Author     : ZheLin
-    Description: This is the registration page for customer.
+    Description: This is the registration page for employee.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
-    <title>Registration for Customer</title>
+    <title>Registration for Employee</title>
 <script language="javascript" type="text/javascript">
 // <!CDATA[
 
@@ -17,10 +17,10 @@ function Button1_onclick() {
         alert("Your First Name must not be null!!!")
     else if(document.myForm.LastName.value == "")
         alert("Your Last Name must not be null!!!")
-    else if(document.myForm.Password1.value == "")
-        alert("Your Password must not be null!!!")
-    else if(document.myForm.Password1.value != document.myForm.Password2.value)
-        alert("The Two Passwords Should Be the SAME!!!")    
+    else if(document.myForm.Wage.value == "")
+        alert("Your Hourly Rate must not be null!!!")
+    else if(document.myForm.SSN.value == "")
+        alert("You SSN must not be null!!!")
     else if(document.myForm.Email.value == "")
         alert("You Email must not be null!!!")
     else if(document.myForm.Address.value == "")
@@ -33,8 +33,6 @@ function Button1_onclick() {
         alert("Zip Code must not be null!!!")
     else if(document.myForm.Telephone.value == "")
         alert("Telephone must not be null!!!")
-    else if(document.myForm.CreditCard.value == "")
-        alert("Credit Card Number must not be null!!!")
     else{document.myForm.submit()}
 }
 
@@ -53,11 +51,11 @@ function Button2_onclick() {
         height: 100%" id="TABLE1">
         <tr>
             <td colspan="2" style="height: 63px; text-align: center; background-color: white;">
-                Customer Registration</td>
+                Employee Registration</td>
         </tr>
         <tr>
         	<form name="myForm" action="useradd" method="post">
-        		<input type="hidden" name="target" value="customer">
+        		<input type="hidden" name="target" value="employee">
             <td style="width: 220px; height: 426px; background-color: white; vertical-align: top; text-align: left;">
                 <span style="font-size: 10pt"><strong>First Name: &nbsp; &nbsp;<br />
                     </strong></span>
@@ -65,17 +63,15 @@ function Button2_onclick() {
                     
                 <span style="font-size: 10pt"><strong><br />Last Name:<br />
                 <input name="LastName" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" />
-                    
+                   
                 <span style="font-size: 10pt"><strong>
-                <br />Password:&nbsp;<br />
+                <br />Hourly Rate:&nbsp;<br />
                 </strong></span>
-                <input name="Password1" style="font-weight: bold; font-size: 10pt; width: 145px; left: 0px; position: relative; top: 0px;" type="password" /><br />
+                <input name="Wage" style="font-weight: bold; font-size: 10pt; width: 145px; left: 0px; position: relative; top: 0px;" type="text" /><br />
+                        
+                <span style="font-size: 10pt"><strong>Social Security Number:<br />
+                <input name="SSN" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
                 
-                <span style="font-size: 10pt"><strong>Re-enter Password:<br />
-                </strong></span>
-                <input id="Password2" style="font-weight: bold; font-size: 10pt; width: 145px" type="password" /><br />
-               
-                    
                 <span style="font-size: 10pt"><strong>Email:<br />
                 <input name="Email" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
                     
@@ -93,15 +89,10 @@ function Button2_onclick() {
                 
                 <span style="font-size: 10pt"><strong>Telephone:<br />
                 <input name="Telephone" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
-                
-                <span style="font-size: 10pt"><strong>Credit Card Number:<br />
-                <input name="CreditCard" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
-                    
-                    Select Your Plan Here:<br />
-                    <input id="Radio1" checked="checked" name="status" type="radio" value="LIMITED"/>&nbsp; LIMITED<br />
-                    <input id="Radio2" name="status" type="radio"  value="UNLIMITED1"/>&nbsp; UNLIMITED1&nbsp;<br/>
-                    <input id="Radio3" name="status" type="radio"  value="UNLIMITED2"/>&nbsp; UNLIMITED2&nbsp;<br />
-                    <input id="Radio4" name="status" type="radio"  value="UNLIMITED3"/>&nbsp; UNLIMITED3<br />
+               
+                    Select Your Position Here:<br />
+                    <input id="Radio1" checked="checked" name="status" type="radio" value="MANAGER"/>&nbsp; Manager<br />
+                    <input id="Radio2" name="status" type="radio"  value="CUSREP"/>&nbsp; Customer Representative<br/>
                     <br />
 
                     <input type="button" value="Finish!" onclick="Button1_onclick()">

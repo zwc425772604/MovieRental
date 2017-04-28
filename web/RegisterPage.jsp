@@ -27,13 +27,13 @@
         </span></strong></span>
     <form name = "form1">
     <input id="Radio1" name="group1" checked="checked" type="radio" /><strong><span style="font-size: 10pt;
-        font-family: Arial">Customer  &nbsp; &nbsp;<input id="Radio2" name="group1" type="radio" />FACULTY
+        font-family: Arial">CUSTOMER  &nbsp; &nbsp;<input id="Radio2" name="group1" type="radio" />FACULTY
         &nbsp;
         &nbsp; &nbsp;&nbsp;
         
         <input id="Button1" style="width: 60px" onclick="Button1_onclick()" type="button" value="Next-->" />
         &nbsp;
-        <input id="Button2" style="width: 60px" onclick="javascript:history.back()" type="button" value="Cancel" /></span></strong>
+        <input id="Button2" style="width: 60px" onclick='javascript:window.open("index.jsp", "_self");' type="button" value="Cancel" /></span></strong>
   		  </form> 		  
     <img style="max-height:200px" src="img/MainPage.jpg" /><br />
     <br />
