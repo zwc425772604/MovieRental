@@ -16,11 +16,7 @@ function Button1_onclick() {
     if(document.myForm.FirstName.value == "")
         alert("Your First Name must not be null!!!")
     else if(document.myForm.LastName.value == "")
-        alert("Your Last Name must not be null!!!")
-    else if(document.myForm.Password1.value == "")
-        alert("Your Password must not be null!!!")
-    else if(document.myForm.Password1.value != document.myForm.Password2.value)
-        alert("The Two Passwords Should Be the SAME!!!")    
+        alert("Your Last Name must not be null!!!") 
     else if(document.myForm.Email.value == "")
         alert("You Email must not be null!!!")
     else if(document.myForm.Address.value == "")
@@ -56,7 +52,7 @@ function Button2_onclick() {
                 Customer Registration</td>
         </tr>
         <tr>
-        	<form name="myForm" action="useradd" method="post">
+        	<form name="myForm" action="UserAddServlet" method="post">
         		<input type="hidden" name="target" value="customer">
             <td style="width: 220px; height: 426px; background-color: white; vertical-align: top; text-align: left;">
                 <span style="font-size: 10pt"><strong>First Name: &nbsp; &nbsp;<br />
@@ -66,16 +62,7 @@ function Button2_onclick() {
                 <span style="font-size: 10pt"><strong><br />Last Name:<br />
                 <input name="LastName" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" />
                     
-                <span style="font-size: 10pt"><strong>
-                <br />Password:&nbsp;<br />
-                </strong></span>
-                <input name="Password1" style="font-weight: bold; font-size: 10pt; width: 145px; left: 0px; position: relative; top: 0px;" type="password" /><br />
-                
-                <span style="font-size: 10pt"><strong>Re-enter Password:<br />
-                </strong></span>
-                <input id="Password2" style="font-weight: bold; font-size: 10pt; width: 145px" type="password" /><br />
-               
-                    
+                <br/>
                 <span style="font-size: 10pt"><strong>Email:<br />
                 <input name="Email" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
                     
