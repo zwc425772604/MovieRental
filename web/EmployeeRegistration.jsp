@@ -21,8 +21,6 @@ function Button1_onclick() {
         alert("Your Hourly Rate must not be null!!!")
     else if(document.myForm.SSN.value == "")
         alert("You SSN must not be null!!!")
-    else if(document.myForm.Email.value == "")
-        alert("You Email must not be null!!!")
     else if(document.myForm.Address.value == "")
         alert("Your Address must not be null!!!")
     else if(document.myForm.City.value == "")
@@ -72,9 +70,6 @@ function Button2_onclick() {
                 <span style="font-size: 10pt"><strong>Social Security Number:<br />
                 <input name="SSN" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
                 
-                <span style="font-size: 10pt"><strong>Email:<br />
-                <input name="Email" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
-                    
                 <span style="font-size: 10pt"><strong>Address:<br />
                 <input name="Address" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
                 
