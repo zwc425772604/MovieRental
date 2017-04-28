@@ -2,6 +2,7 @@
     Document   : index
     Created on : Apr 25, 2017, 11:13:17 PM
     Author     : ZheLin
+    Description: This is the main page of our project, with functions like log in and register.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

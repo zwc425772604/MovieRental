@@ -2,6 +2,7 @@
     Document   : RegisterPage
     Created on : Apr 25, 2017, 11:36:38 PM
     Author     : ZheLin
+    Description: This is a page to choose to register for customer or employee.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
