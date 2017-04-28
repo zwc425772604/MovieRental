@@ -1,10 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    The person object for the database
  */
 package users;
-import java.util.Date;
 import java.io.*;
 
 /**
@@ -21,7 +18,6 @@ public class Person implements Serializable{
     private String state;
     private int zip;
     private long phone;
-    
 
 
     // Getters.
@@ -33,6 +29,7 @@ public class Person implements Serializable{
     public String getState() { return state; }
     public int getZip() { return zip; }
     public long getPhone() { return phone; }
+
    
 
     // Setters.
