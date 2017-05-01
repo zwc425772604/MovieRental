@@ -13,7 +13,7 @@
         function Button1_onclick() {
         if(document.myForm.username.value == "")
             alert("UserName Can Not Be Null!")
-        javascript:myForm.submit()
+            javascript:myForm.submit()
         }
 
         function Button2_onclick() {
