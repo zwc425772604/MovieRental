@@ -32,7 +32,7 @@ public class loginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String userpasswd = request.getParameter("userpasswd");
         String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
-        String mysURL ="jdbc:mysql://127.0.0.1:3306/sys";  // sys is the database name
+        String mysURL ="jdbc:mysql://127.0.0.1:3306/cse305";  //cse305 is the database name
         String mysUserID = "root"; 
         String mysPassword = "1234";
 
@@ -55,8 +55,8 @@ public class loginServlet extends HttpServlet {
                 //connect to the database
                 conn=java.sql.DriverManager.getConnection(mysURL,sysprops);
                 //test connect
-                if(conn!= null)
-                    response.sendRedirect("RegisterPage.jsp");
+                //if(conn!= null)
+                //    response.sendRedirect("RegisterPage.jsp");
                 //test connect
 
                 conn.setAutoCommit(false);

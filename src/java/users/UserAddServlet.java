@@ -36,7 +36,7 @@ public class UserAddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        /* //This is testing customer message
         String FName = request.getParameter("FirstName");
         String LName = request.getParameter("LastName");
         String address = request.getParameter("Address");
@@ -45,9 +45,9 @@ public class UserAddServlet extends HttpServlet {
         String state = request.getParameter("State");
         String zipStr = request.getParameter("Zip");
         String phoneStr = request.getParameter("Telephone");
-        System.out.println(FName+LName+address+city+state+zipStr+phoneStr);
+        
+
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -58,7 +58,9 @@ public class UserAddServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-
+        */
+        
+        
         String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
         String mysURL ="jdbc:mysql://127.0.0.1:3306/cse305";
         String mysUserID = "root"; 
@@ -77,14 +79,49 @@ public class UserAddServlet extends HttpServlet {
             System.out.println("Connected successfully to database using JConnect");
 
             java.sql.Statement stmt1=conn.createStatement();
+
+            java.sql.CallableStatement statement = conn.prepareCall("{call AddCustomer(?, ?)}");
+            
             if (request.getParameter("target").trim().equals("customer")) {
                 // TODO: ID should be generated for customers
                 // TODO: get customer credit card #, rating
                 // TODO: generate date
-                
-                //stmt1.executeUpdate("insert into Student values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("status")+"')");
+               
+                //stmt1.executeUpdate("insert into Person values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("status")+"')");
                 //out.print("insert into Student values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("status")+"')");
-                stmt1.close();
+                //stmt1.close();
+                
+                // get parameters
+                String FName = request.getParameter("FirstName");
+                String LName = request.getParameter("LastName");
+                String address = request.getParameter("Address");
+                String email = request.getParameter("Email");
+                String city = request.getParameter("City");
+                String state = request.getParameter("State");
+                String zipStr = request.getParameter("Zip");
+                String phoneStr = request.getParameter("Telephone");
+                String creditStr = request.getParameter("CreditCard");
+                
+                int zip = Integer.parseInt(zipStr);
+                long phone = Long.parseLong(phoneStr);
+                long credit = Long.parseLong(creditStr);
+                
+                java.sql.CallableStatement stmt = conn.prepareCall("{call AddCustomer(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+                stmt.setString(1, FName);
+                stmt.setString(2, LName);
+                stmt.setString(3, address);
+                stmt.setString(4, city);
+                stmt.setString(5, state);
+                stmt.setInt(6, zip);
+                stmt.setLong(7, phone);
+                stmt.setString(8, email);
+                stmt.setLong(9, credit);
+
+                stmt.execute();
+                stmt.close();
+
+                
+                
             } else {
                 // TODO: get employee ssn, position, wage
                 // TODO: generate date
