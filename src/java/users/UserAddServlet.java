@@ -80,10 +80,6 @@ public class UserAddServlet extends HttpServlet {
             conn=java.sql.DriverManager.getConnection(mysURL,sysprops);
 
             if (request.getParameter("target").trim().equals("customer")) {
-                // TODO: ID should be generated for customers
-                // TODO: get customer credit card #, rating
-                // TODO: generate date              
-                
                 // get parameters
                 String FName = request.getParameter("FirstName");
                 String LName = request.getParameter("LastName");
@@ -99,8 +95,6 @@ public class UserAddServlet extends HttpServlet {
                 int zip = Integer.parseInt(zipStr);
                 long phone = Long.parseLong(phoneStr);
                 long credit = Long.parseLong(creditStr);
-                //Calendar currenttime = Calendar.getInstance();
-                //java.sql.Date date = new java.sql.Date((currenttime.getTime()).getTime());
                 java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
                 
                 // add to customer table and person table
@@ -120,21 +114,30 @@ public class UserAddServlet extends HttpServlet {
 
                 // add to account table
                 java.sql.Statement stmt1 = conn.createStatement();
-                String accountStr = "";
+                String cusStr = "";
                 java.sql.ResultSet rs = stmt1.executeQuery("SELECT Customer.ID from Customer, Person WHERE Customer.ID = Person.ID AND Person.FirstName='"+ FName + "' AND Person.LastName='" + LName + "' AND Person.Address='" + address + "' AND Person.City='" + city + "' AND Person.State='" + state + "' AND Person.zip='" + zip + "'");
                 if (rs.next()) {
-                    accountStr = rs.getString(1);
+                    cusStr = rs.getString(1);
                 }
                 stmt1.close();
-                long account = Long.parseLong(accountStr);
+                long cusID = Long.parseLong(cusStr);
                 java.sql.CallableStatement stmt2 = conn.prepareCall("{call createAccount(?, ?, ?)}");
-                stmt2.setLong(1, account);
+                stmt2.setLong(1, cusID);
                 stmt2.setString(2, accType);
                 stmt2.setDate(3, date);
                 
                 stmt2.execute();
                 stmt2.close();
                 
+                // Get the account id for customer to login
+                java.sql.Statement stmt3 = conn.createStatement();
+                String accountStr = "";
+                java.sql.ResultSet rs1 = stmt3.executeQuery("SELECT Account.ID from Account, Customer WHERE Customer.ID = Account.CustomerID AND Customer.ID='"+ cusID + "'");
+                if (rs1.next()) {
+                    accountStr = rs1.getString(1);
+                }
+                stmt3.close();
+                request.setAttribute("accountNum", accountStr);
                 
             } else {
                 // TODO: get employee ssn, position, wage

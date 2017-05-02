@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Registration Succeeded!</h1>
+        <h2>Your User ID is ${accountNum}, please use it to login.</h2>
         <a href="index.jsp">return to main page</a>
     </body>
 </html>
