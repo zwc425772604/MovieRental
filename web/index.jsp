@@ -29,16 +29,15 @@
         <br />
         
         <form name="myForm" action="login" method="post">
-
-        <span style="font-size: 10pt">User ID :</span>
-        <input id="Text1" name="username" type="text" />
-        &nbsp; <span style="font-size: 10pt">Password:</span>
-        <input id="Password1" name="userpasswd" type="password" />
-        &nbsp;
-        <input id="Button1" style="width: 70px" type="button" value="Log In" onclick="return Button1_onclick()" />
-        &nbsp;
-        <input id="Button2" style="width: 70px" type="button" value="Register" onclick="return Button2_onclick()" /><br />
-        <br />
+            <input id="Radio1" name="group1" checked="checked" type="radio" value ="customer" /><strong><span style="font-size: 10pt;
+        font-family: Arial">CUSTOMER  &nbsp; &nbsp;<input id="Radio2" name="group1" type="radio" value="employee"/>EMPLOYEE<br/>
+            <span style="font-size: 10pt">User ID :</span>
+            <input id="Text1" name="username" type="text" />
+            &nbsp; 
+            <input id="Button1" style="width: 70px" type="button" value="Log In" onclick="return Button1_onclick()" />
+            &nbsp;
+            <input id="Button2" style="width: 70px" type="button" value="Register" onclick="return Button2_onclick()" /><br />
+            <br />
         </form>
         
         <span style="font-size: 9pt">

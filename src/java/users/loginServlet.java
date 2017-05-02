@@ -25,12 +25,11 @@ public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if((request.getParameter("action")!=null)&&(request.getParameter("action").trim().equals("logout"))){
            HttpSession session=request.getSession();  
-           session.putValue("login","");
-           response.sendRedirect("/");
+           session.setAttribute("login","");
+           response.sendRedirect("index.jsp");
            return;
         }
         String username = request.getParameter("username");
-        String userpasswd = request.getParameter("userpasswd");
         String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
         String mysURL ="jdbc:mysql://127.0.0.1:3306/cse305";  //cse305 is the database name
         String mysUserID = "root"; 
@@ -39,42 +38,50 @@ public class loginServlet extends HttpServlet {
         HttpSession session=request.getSession();  
         session.putValue("login","");
         // username is not provided
-        if ((username!=null) &&(userpasswd!=null)) {
-            if (username.trim().equals("") || userpasswd.trim().equals("")){
+        if ((username!=null)) {
+            if (username.trim().equals("")){
                 response.sendRedirect("index.jsp");
         }else {
             java.sql.Connection conn=null;
-            try {
-               
+            
+            try {              
+                
                 Class.forName(mysJDBCDriver).newInstance();
                 java.util.Properties sysprops=System.getProperties();
                 sysprops.put("user",mysUserID);
                 sysprops.put("password",mysPassword);
 
-                //response.sendRedirect("RegisterPage.jsp");
                 //connect to the database
                 conn=java.sql.DriverManager.getConnection(mysURL,sysprops);
-                //test connect
-                //if(conn!= null)
-                //    response.sendRedirect("RegisterPage.jsp");
-                //test connect
-
+                
+                String cusOrEmp = request.getParameter("group1");
+                session.setAttribute("cusOrEmp", cusOrEmp);
                 conn.setAutoCommit(false);
                 java.sql.Statement stmt1=conn.createStatement();
-                java.sql.ResultSet rs = stmt1.executeQuery(" select * from Account where ID='"+username+"'");
-                if (rs.next()) {
-                    // login success as student
-                    session.putValue("login",username);
-                    //response.sendRedirect("studentinfo");
-                    //response.sendRedirect("/StudentInfoServlet");
+                if (cusOrEmp.equals("customer")) {
+                    session.setAttribute("login",username);
+                    java.sql.ResultSet rs = stmt1.executeQuery(" SELECT * FROM Account where Id='"+username+"'");
+                    if(rs.next()) {
+                        // login success as customer
+                        response.sendRedirect("RegisterPage.jsp");
+                    } else {
+                        response.sendRedirect("loginFailure.jsp");
+                    }
 
-                    System.out.println("RequestDispatcher rd= context.getRequestDispatcher;");
-
-                    ServletContext context= getServletContext();
-                    RequestDispatcher rd= context.getRequestDispatcher("/studentinfo");
-                    rd.forward(request, response);
+                    /*ServletContext context= getServletContext();
+                    RequestDispatcher rd= context.getRequestDispatcher("registerPage.jsp");
+                    rd.forward(request, response);*/
                 } else {
-                    rs = stmt1.executeQuery(" select * from Employee where SSN='"+username+"'");
+                    session.setAttribute("login",username);
+                    java.sql.ResultSet rs = stmt1.executeQuery(" SELECT * FROM Employee where SSN='"+username+"'");
+                    if(rs.next()) {
+                        // login success as employee
+                        response.sendRedirect("RegisterPage.jsp");
+                    } else {
+                        response.sendRedirect("loginFailure.jsp");
+                    }
+                    
+                    /*rs = stmt1.executeQuery(" select * from Employee where SSN='"+username+"'");
 
                     if(rs.next()) {
                         // login as employee
@@ -83,7 +90,8 @@ public class loginServlet extends HttpServlet {
                     } else {
                         // username or password mistake
                         response.sendRedirect("passMistake.jsp");
-                    }
+                    }*/
+                    
                 }
             } catch(Exception e){
                 e.printStackTrace();

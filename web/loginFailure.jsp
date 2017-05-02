@@ -9,10 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration Failed!</title>
+        <title>Login Failed!</title>
     </head>
     <body>
-        <h1>Registration Failed!</h1>
+        <h1>Login Failed!</h1>
+        <h2>${login} is not an account of ${cusOrEmp}.</h2>
         <a href="index.jsp">return to main page</a>
     </body>
 </html>
