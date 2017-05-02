@@ -52,7 +52,7 @@ function Button2_onclick() {
                 Employee Registration</td>
         </tr>
         <tr>
-        	<form name="myForm" action="useradd" method="post">
+        	<form name="myForm" action="UserAddServlet" method="post">
         		<input type="hidden" name="target" value="employee">
             <td style="width: 220px; height: 426px; background-color: white; vertical-align: top; text-align: left;">
                 <span style="font-size: 10pt"><strong>First Name: &nbsp; &nbsp;<br />
@@ -151,10 +151,10 @@ function Button2_onclick() {
                 <span style="font-size: 10pt"><strong>Telephone:<br />
                 <input name="Telephone" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
                
-                    Select Your Position Here:<br />
-                    <input id="Radio1" checked="checked" name="status" type="radio" value="MANAGER"/>&nbsp; Manager<br />
-                    <input id="Radio2" name="status" type="radio"  value="CUSREP"/>&nbsp; Customer Representative<br/>
-                    <br />
+                Select Your Position Here:<br />
+                <input id="Radio1" checked="checked" name="status" type="radio" value="MANAGER"/>&nbsp; Manager<br />
+                <input id="Radio2" name="status" type="radio"  value="CUSREP"/>&nbsp; Customer Representative<br/>
+                <br />
 
                     <input type="button" value="Finish!" onclick="Button1_onclick()">
                     

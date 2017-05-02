@@ -23,11 +23,11 @@
         <span style="font-size: 10pt; font-family: Arial">
             <br />
             First, &nbsp;please select whether
-            you are a Customer or Faculty &nbsp;&nbsp; &nbsp;&nbsp;
+            you are a Customer or Employee &nbsp;&nbsp; &nbsp;&nbsp;
         </span></strong></span>
     <form name = "form1">
     <input id="Radio1" name="group1" checked="checked" type="radio" /><strong><span style="font-size: 10pt;
-        font-family: Arial">CUSTOMER  &nbsp; &nbsp;<input id="Radio2" name="group1" type="radio" />FACULTY
+        font-family: Arial">CUSTOMER  &nbsp; &nbsp;<input id="Radio2" name="group1" type="radio" />EMPLOYEE
         &nbsp;
         &nbsp; &nbsp;&nbsp;
         

@@ -140,15 +140,41 @@ public class UserAddServlet extends HttpServlet {
                 request.setAttribute("accountNum", accountStr);
                 
             } else {
-                // TODO: get employee ssn, position, wage
-                // TODO: generate date
+                // get parameters
+                String FName = request.getParameter("FirstName");
+                String LName = request.getParameter("LastName");
+                String address = request.getParameter("Address");
+                String city = request.getParameter("City");
+                String state = request.getParameter("State");
+                String zipStr = request.getParameter("Zip");
+                String phoneStr = request.getParameter("Telephone");
+                String ssnStr = request.getParameter("SSN");
+                String wageStr = request.getParameter("Wage");
+                String position = request.getParameter("status");
                 
+                int zip = Integer.parseInt(zipStr);
+                long phone = Long.parseLong(phoneStr);
+                long ssn = Long.parseLong(ssnStr);
+                int wage = Integer.parseInt(wageStr);
+                java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
                 
-                //stmt1.executeUpdate("insert into Professor values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("DepID")+"')");
-                //System.out.println("Id:		"+Id);
+                // add to customer table and person table
+                java.sql.CallableStatement stmt = conn.prepareCall("{call AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+                stmt.setString(1, position);
+                stmt.setLong(2, ssn);
+                stmt.setString(3, FName);
+                stmt.setString(4, LName);
+                stmt.setString(5, address);
+                stmt.setString(6, city);
+                stmt.setString(7, state);
+                stmt.setInt(8, zip);
+                stmt.setLong(9, phone);
+                stmt.setDate(10, date);
+                stmt.setInt(11, wage);
 
-                // out.print("insert into Professor values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("DepID")+"')");;
-                //stmt1.close();
+                stmt.execute();
+                stmt.close();
+                request.setAttribute("accountNum", ssnStr);
             }
         } catch(Exception e) {
             e.printStackTrace();

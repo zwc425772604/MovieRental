@@ -23,7 +23,7 @@
     </script>
 </head>
 <body style="font-size: 12pt; text-align: center" bgcolor="white">
-    <span style="font-family: Arial"><strong><span style="font-size: 14pt">Trappist-1f Video Rental</span><br />
+    <span style="font-family: Arial"><strong><span style="font-size: 14pt">Trappist-1f Movie Rental</span><br />
         <br />
         <img style="max-height:200px" src="img/MainPage.jpg" /><br />
         <br />
