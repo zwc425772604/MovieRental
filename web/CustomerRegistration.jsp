@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <head>
     <title>Registration for Customer</title>
+    <link href="css/register_page.css" rel="stylesheet" type="text/css">
 <script language="javascript" type="text/javascript">
 // <!CDATA[
 
@@ -57,20 +58,20 @@ function Button2_onclick() {
             <td style="width: 220px; height: 426px; background-color: white; vertical-align: top; text-align: left;">
                 <span style="font-size: 10pt"><strong>First Name: &nbsp; &nbsp;<br />
                     </strong></span>
-                <input name="FirstName" style="font-weight: bold; font-size: 10pt; width: 145px; left: 1px; position: relative; top: 0px;" type="text" />
+                <input name="FirstName" class = "customer_first_name" type="text" />
                     
                 <span style="font-size: 10pt"><strong><br />Last Name:<br />
-                <input name="LastName" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" />
+                <input name="LastName" class = "customer_last_name" type="text" />
                     
                 <br/>
                 <span style="font-size: 10pt"><strong>Email:<br />
-                <input name="Email" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
+                <input name="Email" class = "customer_email" type="text" /><br />
                     
                 <span style="font-size: 10pt"><strong>Address:<br />
-                <input name="Address" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
+                <input name="Address" class = "customer_address" type="text" /><br />
                 
                 <span style="font-size: 10pt"><strong>City:<br />
-                <input name="City" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
+                <input name="City" class = "customer_city" type="text" /><br />
                 
                 <span style="font-size: 10pt"><strong>State:<br />
                 <select name="State">
@@ -142,13 +143,13 @@ function Button2_onclick() {
                 <br/>
                 
                 <span style="font-size: 10pt"><strong>Zip Code:<br />
-                <input name="Zip" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
+                <input name="Zip" class = "customer_zip" type="text" /><br />
                 
                 <span style="font-size: 10pt"><strong>Telephone:<br />
-                <input name="Telephone" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
+                <input name="Telephone" class = "customer_telephone" type="text" /><br />
                 
                 <span style="font-size: 10pt"><strong>Credit Card Number:<br />
-                <input name="CreditCard" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
+                <input name="CreditCard" class = "customer_credit_card" type="text" /><br />
                     
                     Select Your Plan Here:<br />
                     <input id="Radio1" checked="checked" name="status" type="radio" value="Limited"/>&nbsp; LIMITED<br />

@@ -1,0 +1,54 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 2, 2017, 6:40:48 PM
+    Author     : Weichao ZHao
+*/
+
+/* Customer Registration Page */
+.customer_first_name
+{
+    font-weight: bold; 
+    font-size: 10pt; 
+    width: 145px; 
+    left: 1px; 
+    position: relative; 
+    top: 0px;
+}
+
+.customer_last_name, .customer_email, customer_address, .customer_city, .customer_zip, .customer_telephone, .customer_credit_card
+{
+    font-weight: bold; 
+    font-size: 10pt; 
+    width: 145px;
+} 
+
+    /* Employer Registration Page */
+.employer_first_name
+{
+    font-weight: bold; 
+    font-size: 10pt; 
+    width: 145px; 
+    left: 1px; 
+    position: relative; 
+    top: 0px;
+}
+.employer_last_name, .employer_address, .employer_ssn, .employer_telephone, .employer_city, .employer_zip
+{
+    font-weight: bold; 
+    font-size: 10pt; 
+    width: 145px;
+}
+
+.employer_wage
+{
+    font-weight: bold;
+    font-size: 10pt; 
+    width: 145px; 
+    left: 0px; 
+    position: relative;
+    top: 0px;
+}
