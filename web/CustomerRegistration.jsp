@@ -151,10 +151,10 @@ function Button2_onclick() {
                 <input name="CreditCard" style="font-weight: bold; font-size: 10pt; width: 145px" type="text" /><br />
                     
                     Select Your Plan Here:<br />
-                    <input id="Radio1" checked="checked" name="status" type="radio" value="LIMITED"/>&nbsp; LIMITED<br />
-                    <input id="Radio2" name="status" type="radio"  value="UNLIMITED1"/>&nbsp; UNLIMITED1&nbsp;<br/>
-                    <input id="Radio3" name="status" type="radio"  value="UNLIMITED2"/>&nbsp; UNLIMITED2&nbsp;<br />
-                    <input id="Radio4" name="status" type="radio"  value="UNLIMITED3"/>&nbsp; UNLIMITED3<br />
+                    <input id="Radio1" checked="checked" name="status" type="radio" value="Limited"/>&nbsp; LIMITED<br />
+                    <input id="Radio2" name="status" type="radio"  value="Unlimited"/>&nbsp; UNLIMITED1&nbsp;<br/>
+                    <input id="Radio3" name="status" type="radio"  value="Unlimited+"/>&nbsp; UNLIMITED2&nbsp;<br />
+                    <input id="Radio4" name="status" type="radio"  value="Unlimited++"/>&nbsp; UNLIMITED3<br />
                     <br />
 
                     <input type="button" value="Finish!" onclick="Button1_onclick()">
@@ -174,7 +174,7 @@ function Button2_onclick() {
                 </strong></span>
             </td>
             <td style="vertical-align: top; background-color: white; text-align: justify; width: 355px; height: 426px;">
-            <img style="max-height:200px" src="img/MainPage.jpg" /></td>
+            <img style="max-height:200px" src="img/popcorn.jpg" /></td>
            </form>
         </tr>
         <tr>

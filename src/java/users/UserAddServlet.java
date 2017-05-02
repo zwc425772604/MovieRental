@@ -8,6 +8,8 @@ package users;
 
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.*;
@@ -76,20 +78,11 @@ public class UserAddServlet extends HttpServlet {
 
             //connect to the database
             conn=java.sql.DriverManager.getConnection(mysURL,sysprops);
-            System.out.println("Connected successfully to database using JConnect");
 
-            java.sql.Statement stmt1=conn.createStatement();
-
-            java.sql.CallableStatement statement = conn.prepareCall("{call AddCustomer(?, ?)}");
-            
             if (request.getParameter("target").trim().equals("customer")) {
                 // TODO: ID should be generated for customers
                 // TODO: get customer credit card #, rating
-                // TODO: generate date
-               
-                //stmt1.executeUpdate("insert into Person values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("status")+"')");
-                //out.print("insert into Student values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("status")+"')");
-                //stmt1.close();
+                // TODO: generate date              
                 
                 // get parameters
                 String FName = request.getParameter("FirstName");
@@ -101,11 +94,16 @@ public class UserAddServlet extends HttpServlet {
                 String zipStr = request.getParameter("Zip");
                 String phoneStr = request.getParameter("Telephone");
                 String creditStr = request.getParameter("CreditCard");
+                String accType = request.getParameter("status");
                 
                 int zip = Integer.parseInt(zipStr);
                 long phone = Long.parseLong(phoneStr);
                 long credit = Long.parseLong(creditStr);
+                //Calendar currenttime = Calendar.getInstance();
+                //java.sql.Date date = new java.sql.Date((currenttime.getTime()).getTime());
+                java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
                 
+                // add to customer table and person table
                 java.sql.CallableStatement stmt = conn.prepareCall("{call AddCustomer(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
                 stmt.setString(1, FName);
                 stmt.setString(2, LName);
@@ -120,6 +118,22 @@ public class UserAddServlet extends HttpServlet {
                 stmt.execute();
                 stmt.close();
 
+                // add to account table
+                java.sql.Statement stmt1 = conn.createStatement();
+                String accountStr = "";
+                java.sql.ResultSet rs = stmt1.executeQuery("SELECT Customer.ID from Customer, Person WHERE Customer.ID = Person.ID AND Person.FirstName='"+ FName + "' AND Person.LastName='" + LName + "' AND Person.Address='" + address + "' AND Person.City='" + city + "' AND Person.State='" + state + "' AND Person.zip='" + zip + "'");
+                if (rs.next()) {
+                    accountStr = rs.getString(1);
+                }
+                stmt1.close();
+                long account = Long.parseLong(accountStr);
+                java.sql.CallableStatement stmt2 = conn.prepareCall("{call createAccount(?, ?, ?)}");
+                stmt2.setLong(1, account);
+                stmt2.setString(2, accType);
+                stmt2.setDate(3, date);
+                
+                stmt2.execute();
+                stmt2.close();
                 
                 
             } else {
@@ -131,7 +145,7 @@ public class UserAddServlet extends HttpServlet {
                 //System.out.println("Id:		"+Id);
 
                 // out.print("insert into Professor values('"+Id+"','"+Password1+"','"+Name+"','"+request.getParameter("DepID")+"')");;
-                stmt1.close();
+                //stmt1.close();
             }
         } catch(Exception e) {
             e.printStackTrace();
@@ -140,7 +154,9 @@ public class UserAddServlet extends HttpServlet {
             try{conn.close();}catch(Exception ee){};
         }
 
-        //RequestDispatcher view = request.getRequestDispatcher("useradd.jsp");
-        //view.forward(request, response);    
+
+        RequestDispatcher view = request.getRequestDispatcher("regSuccess.jsp");
+        view.forward(request, response);    
+
     }
 }

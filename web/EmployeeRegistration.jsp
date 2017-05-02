@@ -173,7 +173,7 @@ function Button2_onclick() {
                 </strong></span>
             </td>
             <td style="vertical-align: top; background-color: white; text-align: justify; width: 355px; height: 426px;">
-            <img style="max-height:200px" src="img/MainPage.jpg" /></td>
+            <img style="max-height:200px" src="img/popcorn2.jpg" /></td>
            </form>
         </tr>
         <tr>
