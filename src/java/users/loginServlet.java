@@ -63,7 +63,9 @@ public class loginServlet extends HttpServlet {
                     java.sql.ResultSet rs = stmt1.executeQuery(" SELECT * FROM Account where Id='"+username+"'");
                     if(rs.next()) {
                         // login success as customer
-                        response.sendRedirect("CustomerInformation.jsp");
+                        ServletContext context= getServletContext();
+                        RequestDispatcher rd= context.getRequestDispatcher("/CustomerInfoServlet");
+			rd.forward(request, response);
                     } else {
                         response.sendRedirect("loginFailure.jsp");
                     }

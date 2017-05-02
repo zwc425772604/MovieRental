@@ -14,7 +14,7 @@
     </head>
     <body style="text-align: center" bgcolor="White">
         <img style="max-height:200px; width:100%" src="img/homepage.jpg" /><br />
-        <span style="font-size: 14pt; font-family: Arial"><strong>Hello, . Welcome to Trappist-1f Movie Rental.<br />
+        <span style="font-size: 14pt; font-family: Arial"><strong>Hello, ${customerData.FName} ${customerData.LName}. Welcome to Trappist-1f Movie Rental.<br />
         <br />
         <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; height: 100%">
             <tr>

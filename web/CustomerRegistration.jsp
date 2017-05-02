@@ -26,12 +26,12 @@ function Button1_onclick() {
         alert("City must not be null!!!")
     else if(document.myForm.State.value == "")
         alert("State must not be null!!!")
-    else if(document.myForm.Zip.value == "")
-        alert("Zip Code must not be null!!!")
-    else if(document.myForm.Telephone.value == "")
-        alert("Telephone must not be null!!!")
-    else if(document.myForm.CreditCard.value == "")
-        alert("Credit Card Number must not be null!!!")
+    else if(document.myForm.Zip.value.length != 5)
+        alert("Zip Code must 5 digit long!!!")
+    else if(document.myForm.Telephone.value.length != 10)
+        alert("Telephone must 10 digit long!!!")
+    else if(document.myForm.CreditCard.value.length != 16)
+        alert("Credit Card Number must be 16 digit long!!!")
     else{document.myForm.submit()}
 }
 

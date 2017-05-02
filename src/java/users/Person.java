@@ -10,7 +10,7 @@ import java.io.*;
  */
 public class Person implements Serializable{
     // Properties.
-    private int id; //It's account number for customers and ssn for employees
+    private long id; //It's account number for customers and ssn for employees
     private String FName;
     private String LName;
     private String address;
@@ -21,7 +21,7 @@ public class Person implements Serializable{
 
 
     // Getters.
-    public int getId() { return id; }
+    public long getId() { return id; }
     public String getFName() { return FName; }
     public String getLName() { return LName; }
     public String getAddress() { return address; }
@@ -33,7 +33,7 @@ public class Person implements Serializable{
    
 
     // Setters.
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
     public void setFName(String FName) { this.FName = FName; }
     public void setLName(String LName) { this.LName = LName; }
     public void setAddress(String address) { this.address = address; }
