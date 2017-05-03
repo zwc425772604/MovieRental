@@ -20,6 +20,13 @@ import javax.servlet.http.HttpSession;
  */
 public class loginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			 
+	ServletContext context= getServletContext();
+        RequestDispatcher rd= context.getRequestDispatcher("/CustomerInfoServlet");
+	rd.forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +43,7 @@ public class loginServlet extends HttpServlet {
         String mysPassword = "1234";
 
         HttpSession session=request.getSession();  
-        session.putValue("login","");
+        session.setAttribute("login","");
         // username is not provided
         if ((username!=null)) {
             if (username.trim().equals("")){
@@ -69,10 +76,6 @@ public class loginServlet extends HttpServlet {
                     } else {
                         response.sendRedirect("loginFailure.jsp");
                     }
-
-                    /*ServletContext context= getServletContext();
-                    RequestDispatcher rd= context.getRequestDispatcher("registerPage.jsp");
-                    rd.forward(request, response);*/
                 } else {
                     session.setAttribute("login",username);
                     java.sql.ResultSet rs = stmt1.executeQuery(" SELECT * FROM Employee where SSN='"+username+"'");
@@ -82,18 +85,6 @@ public class loginServlet extends HttpServlet {
                     } else {
                         response.sendRedirect("loginFailure.jsp");
                     }
-                    
-                    /*rs = stmt1.executeQuery(" select * from Employee where SSN='"+username+"'");
-
-                    if(rs.next()) {
-                        // login as employee
-                        session.putValue("login", username);
-                        response.sendRedirect("FacultyInformation.jsp");
-                    } else {
-                        // username or password mistake
-                        response.sendRedirect("passMistake.jsp");
-                    }*/
-                    
                 }
             } catch(Exception e){
                 e.printStackTrace();
