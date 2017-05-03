@@ -47,9 +47,9 @@
              
          <% 
             String mysJDBCDriver = "com.mysql.jdbc.Driver";
-            String mysURL = "jdbc:mysql://127.0.0.1:3306/employee_testing";
+            String mysURL = "jdbc:mysql://127.0.0.1:3306/cse305";
             String mysUserID = "root";
-            String mysPassword = "Zhao6288588@";
+            String mysPassword = "1234";
             ArrayList<Movie> movies = new ArrayList<Movie>();
              Movie mov = null;
             java.sql.Connection conn = null;
