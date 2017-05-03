@@ -10,7 +10,13 @@
 <html>
     <head>
         <title>Trappist1-f Movie Rental</title>
-
+        <script>
+            function displaySearchBox()
+            {
+               var a = document.getElementsByClassName("search_course")[0];
+               a.style.display = "inline";
+            }
+            </script>
     </head>
     <body style="text-align: center" bgcolor="White">
         <img style="max-height:200px; width:100%" src="img/homepage.jpg" /><br />
@@ -78,8 +84,15 @@
                 
             </tr>
         </table>
-        <input id="Button1" type="button" value="Search Course" onclick="window.open('SearchCourse.htm','_self');" />
-        <input id="Button1" type="button" value="Logout" onclick="window.open('index.htm','_self');" /><br />
+    
+        <input id="Button1" type="button" value="Search Course" onclick="window.open('searchMovie.jsp','_self');" />
+        
+            
+        <input id="Button1" type="button" value="Logout" onclick="window.open('index.jsp','_self');" /><br />
+        <div class = "search_course" id ="search_box" style="display:none">
+            <label> Search by keyword: </label>
+            <input type ="text" id ="keyword"/>
+        </div>
         <span style="font-size: 8pt">
         <br />
         Group Trappist-1f, 2017<br />
