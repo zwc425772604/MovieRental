@@ -9,6 +9,8 @@ import users.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ZheLin
  */
-public class ReturnServlet extends HttpServlet {
+public class AddWishServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			 
         ServletContext context= getServletContext();
@@ -34,25 +36,12 @@ public class ReturnServlet extends HttpServlet {
         throws ServletException, IOException {
         HttpSession session=request.getSession();  
 	          
-        ArrayList<Movie> rentList = (ArrayList<Movie>) session.getAttribute("rentList");
-        long orderId = Long.parseLong(request.getParameter("orderId"));
         String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
         String mysURL ="jdbc:mysql://127.0.0.1:3306/cse305";
         String mysUserID = "root"; 
         String mysPassword = "1234";
         
-        // First delete it in the list
-        int i = 0;
-        for(; i < rentList.size(); i++) {
-            Movie movie = rentList.get(i);
-            if (movie.getOrderId() == orderId){
-                break;
-            }
-        }
-        
-        Movie movie = rentList.remove(i);
-        
-        // then go to database
+        //go to database
         java.sql.Connection conn=null;
         try {
             Class.forName(mysJDBCDriver).newInstance();
@@ -63,11 +52,11 @@ public class ReturnServlet extends HttpServlet {
             //connect to the database
             conn=java.sql.DriverManager.getConnection(mysURL,sysprops);
 
-            java.sql.CallableStatement stmt = conn.prepareCall("{call SetReturned(?)}");
-            stmt.setLong(1, orderId);
-            stmt.execute();
+            java.sql.Statement stmt = conn.createStatement();
+            String wishId = request.getParameter("wishId");
+            String wishAccount = request.getParameter("wishAccount");
+            stmt.executeUpdate("INSERT INTO Queued(AccountID, MovieID, DateAdded)" + " VALUES(" + wishAccount + "," + wishAccount + ", NULL )" );
             stmt.close();
-            
         } catch(Exception e)
         {
                 e.printStackTrace();

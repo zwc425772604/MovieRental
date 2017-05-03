@@ -20,6 +20,14 @@
         <servlet-name>RentServlet</servlet-name>
         <servlet-class>movieData.RentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddWishServlet</servlet-name>
+        <servlet-class>movieData.AddWishServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveWishServlet</servlet-name>
+        <servlet-class>movieData.RemoveWishServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>RentServlet</servlet-name>
         <url-pattern>/RentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddWishServlet</servlet-name>
+        <url-pattern>/AddWishServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveWishServlet</servlet-name>
+        <url-pattern>/RemoveWishServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

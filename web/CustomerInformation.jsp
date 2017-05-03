@@ -16,7 +16,11 @@
                var a = document.getElementsByClassName("search_course")[0];
                a.style.display = "inline";
             }
-            </script>
+            function test(i, j) {
+                alert(i + "," + j);
+            }
+            
+        </script>
     </head>
     <body style="text-align: center" bgcolor="White">
         <img style="max-height:200px; width:100%" src="img/homepage.jpg" /><br />
@@ -78,9 +82,13 @@
                                     <span style="font-size: 10pt">${item.genre}</span></td>
                                 <td>
                                     <form name="myForm2" action="RentServlet" method="post">
-                                        <input type="hidden" name="somename" value=${item.orderId} >  
-                                        <input id="ReturnRent" type="submit" value="Rent" />
-                                    </form>                        
+                                        <input type="hidden" name="rentId" value=${item.id} >  
+                                        <input id="Rent" type="submit" value="Rent" />
+                                    </form>  
+                                    <form name="myForm3" action="RemoveWishServlet" method="post">
+                                        <input type="hidden" name="somename" value=${item.id} >  
+                                        <input id="Remove" type="submit" value="Remove" />
+                                    </form>    
                                 </td>
                             </tr>      
                         </c:forEach>
@@ -106,13 +114,14 @@
                                 <td style="width: 74px">
                                     <span style="font-size: 10pt">${item.genre}</span></td>
                                 <td>
-                                    <form name="myForm3" action="RentServlet" method="post">
-                                        <input type="hidden" name="somename" value=${item.orderId} >  
-                                        <input id="ReturnRent" type="submit" value="Add to Wish" />
+                                    <form name="myForm4" action="AddWishServlet" method="post">
+                                        <input type="hidden" name="wishId" value=${item.id} >
+                                        <input type="hidden" name="wishAccount" value=${customerData.account}>
+                                        <input id="AddWish" type="submit" value="Add to Wish")"/>
                                     </form>
-                                    <form name="myForm4" action="RentServlet" method="post">
-                                        <input type="hidden" name="somename" value=${item.orderId} >  
-                                        <input id="ReturnRent" type="submit" value="Rent" />
+                                    <form name="myForm5" action="RentServlet" method="post">
+                                        <input type="hidden" name="rentId" value=${item.id} >  
+                                        <input id="Rent" type="submit" value="Rent" />
                                     </form>    
                                 </td>
                             </tr>      
