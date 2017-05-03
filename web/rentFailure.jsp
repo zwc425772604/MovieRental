@@ -13,7 +13,20 @@
     </head>
     <body>
         <h1>Rental Failed! Here are the possible reasons:</h1>
-        <p>1.You are currently holding this movie.</p>
-        <p>2.You have reached your account limit.</p>
+        <ol>
+            <li>
+                <h2>You are currently holding this movie.</h2>
+            </li>
+            <li>
+                <h2>You have reached your account limit:</h2>
+                <ul>
+                    <li>The LIMITED plan allows you to view 1 movie at-a-time and at most 2 movies per month.</li>
+                    <li>The UNLIMITED1 plan allows you to view 1 movie at-a-time and unlimited movies per month.</li>
+                    <li>The UNLIMITED2 plan allows you to view 2 movie at-a-time and unlimited movies per month.</li>
+                    <li>The UNLIMITED3 plan allows you to view 3 movie at-a-time and unlimited movies per month.</li>
+                </ul>
+            </li>
+        </ol>
+        <a href="CustomerInfoServlet">Back</a>
     </body>
 </html>
