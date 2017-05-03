@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Movie implements Serializable{
     // properties
-    private int id;
+    private long id;
     private String title;
     private String genre;
     private double fee;
@@ -21,7 +21,7 @@ public class Movie implements Serializable{
     private int rating;
     
     // getters
-    public int getId() { return id; }
+    public long getId() { return id; }
     public String getTitle() { return title; }
     public String getGenre() { return genre; }
     public double getFee() { return fee; }
@@ -29,7 +29,7 @@ public class Movie implements Serializable{
     public int getRating() { return rating; }
     
     // setters
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
     public void setGenre(String genre) { this.genre = genre; }
     public void setFee(double fee) { this.fee = fee; }
