@@ -27,11 +27,11 @@ function Button1_onclick() {
     else if(document.myForm.State.value == "")
         alert("State must not be null!!!")
     else if(document.myForm.Zip.value.length != 5)
-        alert("Zip Code must 5 digit long!!!")
+        alert("Zip Code must 5 digits long!!!")
     else if(document.myForm.Telephone.value.length != 10)
-        alert("Telephone must 10 digit long!!!")
+        alert("Telephone must 10 digits long!!!")
     else if(document.myForm.CreditCard.value.length != 16)
-        alert("Credit Card Number must be 16 digit long!!!")
+        alert("Credit Card Number must be 16 digits long!!!")
     else{document.myForm.submit()}
 }
 
@@ -143,13 +143,13 @@ function Button2_onclick() {
                 <br/>
                 
                 <span style="font-size: 10pt"><strong>Zip Code:<br />
-                <input name="Zip" class = "customer_zip" type="text" /><br />
+                <input name="Zip" placeholder = "5-digit zip code" class = "customer_zip" type="text" /><br />
                 
                 <span style="font-size: 10pt"><strong>Telephone:<br />
-                <input name="Telephone" class = "customer_telephone" type="text" /><br />
+                        <input name="Telephone" placeholder="10-digit phone#" class = "customer_telephone" type="text" /><br />
                 
                 <span style="font-size: 10pt"><strong>Credit Card Number:<br />
-                <input name="CreditCard" class = "customer_credit_card" type="text" /><br />
+                <input name="CreditCard" placeholder = "16-digit card#"class = "customer_credit_card" type="text" /><br />
                     
                     Select Your Plan Here:<br />
                     <input id="Radio1" checked="checked" name="status" type="radio" value="Limited"/>&nbsp; LIMITED<br />

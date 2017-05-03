@@ -64,6 +64,7 @@
                     // get the customer id with account id
                     if (request.getParameter("movie_type").trim() != "")
                     {  
+                        //#TODO user may enter multiple keywords, so may execute the query multiple times
                         String type = request.getParameter("movie_type");         
                         java.sql.Statement stmt2 = conn.createStatement();  //query for searching by movie types
                         java.sql.ResultSet movieInfo = stmt2.executeQuery("SELECT * FROM Movie M WHERE M.TotalCopies > 0 AND M.Genre='"+type +"'"); 
@@ -79,10 +80,10 @@
                         <%
                         }
                     }
-                    else if (request.getParameter("movie_keyword").trim() != "")
+                    if (request.getParameter("movie_keyword").trim() != "")
                     {
                         String key = request.getParameter("movie_keyword");
-                        java.sql.Statement stmt2 = conn.createStatement();
+                        java.sql.Statement stmt2 = conn.createStatement(); //query for searching the movie by keyword eg. movie title
                         String sql = "SELECT * FROM Movie M WHERE M.Title LIKE CONCAT('%', CONCAT('" + key + "', '%'))";
                         java.sql.ResultSet movieInfo = stmt2.executeQuery(sql);
                         while (movieInfo.next())
@@ -97,6 +98,7 @@
                         <%
                         }
                     }
+                  
 
 
             } catch (Exception e) {
@@ -122,8 +124,8 @@
                     <br />
                     
                     <!--<input id="Button1" type="button" onclick="javascript:history.back();" value="<--Prev" /> -->
-                    <input id="Button1" type="button" onclick="window.open('searchMovie.jsp','_self');" value="<--Prev" />
-                    <input id="Button2" type="button" onclick="window.open('index.htm','_self');" value="Logout" /><br />
+                    <input id="Button1" type="button" onclick="window.open('searchMovie.jsp','_self');" value="Search Again" />
+                    <input id="Button2" type="button" onclick="window.open('index.jsp','_self');" value="Logout" /><br />
                     
                     
                     <br />
