@@ -36,12 +36,10 @@
                             <td style="width: 74px; text-align: center">
                                 <span style="font-size: 10pt">Order Date</span></td>
                             <td style="width: 15px;text-align: center">
-                            <span style="font-size: 10pt">Operation</span></td>
+                            <span style="font-size: 10pt">Operations</span></td>
                         </tr>   
 
-                        <c:set var="count" value="0" scope="page" />
                         <c:forEach items="${rentList}" var="item">
-                            <c:set var="count" value="${count + 1}" scope="page"/>
                             <tr>
                                 <td style="width: 187px">
                                     <span style="font-size: 10pt">${item.title}</span></td>
@@ -50,7 +48,7 @@
                                 <td style="width: 74px">
                                     <span style="font-size: 10pt">${item.date}</span></td>
                                 <td>
-                                    <form name="myForm" action="ReturnServlet" method="post">
+                                    <form name="myForm1" action="ReturnServlet" method="post">
                                         <input type="hidden" name="orderId" value=${item.orderId} >  
                                         <input id="ReturnRent" type="submit" value="Return" />
                                     </form>                        
@@ -60,13 +58,66 @@
                     </table>               
                 </td>
                 <!--show wish list-->
-                <td>
-                    
+                <td style="vertical-align: top; width: 11237px; text-align: left; height: 454px;">
+                    <p>Your wish List</p>
+                    <table border="8" id="TABLE1" onclick="return TABLE1_onclick()">
+                        <tr>
+                            <td style="width: 187px; text-align: center">
+                              <span style="font-size: 10pt">Movie Title</span></td>
+                            <td style="width: 74px; text-align: center">
+                                <span style="font-size: 10pt">Genre</span></td>
+                            <td style="width: 15px;text-align: center">
+                            <span style="font-size: 10pt">Operations</span></td>
+                        </tr>   
+
+                        <c:forEach items="${wishList}" var="item">
+                            <tr>
+                                <td style="width: 187px">
+                                    <span style="font-size: 10pt">${item.title}</span></td>
+                                <td style="width: 74px">
+                                    <span style="font-size: 10pt">${item.genre}</span></td>
+                                <td>
+                                    <form name="myForm2" action="RentServlet" method="post">
+                                        <input type="hidden" name="somename" value=${item.orderId} >  
+                                        <input id="ReturnRent" type="submit" value="Rent" />
+                                    </form>                        
+                                </td>
+                            </tr>      
+                        </c:forEach>
+                    </table>                     
                 </td>
-                <!--show recommendation-->
-                <td>
-                    
-                    
+                <!--show top list-->
+                <td style="vertical-align: top; width: 11237px; text-align: left; height: 454px;">
+                    <p>Best-Seller List</p>
+                    <table border="8" id="TABLE1" onclick="return TABLE1_onclick()">
+                        <tr>
+                            <td style="width: 187px; text-align: center">
+                              <span style="font-size: 10pt">Movie Title</span></td>
+                            <td style="width: 74px; text-align: center">
+                                <span style="font-size: 10pt">Genre</span></td>
+                            <td style="width: 15px;text-align: center">
+                            <span style="font-size: 10pt">Operations</span></td>
+                        </tr>   
+
+                        <c:forEach items="${topList}" var="item">
+                            <tr>
+                                <td style="width: 187px">
+                                    <span style="font-size: 10pt">${item.title}</span></td>
+                                <td style="width: 74px">
+                                    <span style="font-size: 10pt">${item.genre}</span></td>
+                                <td>
+                                    <form name="myForm3" action="RentServlet" method="post">
+                                        <input type="hidden" name="somename" value=${item.orderId} >  
+                                        <input id="ReturnRent" type="submit" value="Add to Wish" />
+                                    </form>
+                                    <form name="myForm4" action="RentServlet" method="post">
+                                        <input type="hidden" name="somename" value=${item.orderId} >  
+                                        <input id="ReturnRent" type="submit" value="Rent" />
+                                    </form>    
+                                </td>
+                            </tr>      
+                        </c:forEach>
+                    </table>                     
                 </td>
                 
                 

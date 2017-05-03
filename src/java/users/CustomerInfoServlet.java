@@ -40,6 +40,8 @@ public class CustomerInfoServlet extends HttpServlet {
             String mysPassword = "1234";
 
             List<Movie> rentList = new ArrayList<Movie>();
+            List<Movie> wishList = new ArrayList<Movie>();
+            List<Movie> topList = new ArrayList<Movie>();
             Customer customer = new Customer();
             java.sql.Connection conn = null;
             try {
@@ -101,29 +103,49 @@ public class CustomerInfoServlet extends HttpServlet {
                         }
                     }
                     
-                    /*String strGrade;
-
-                    while (rs.next()) {
-                            strGrade = rs.getString(5);
-                            if (rs.getString(5).trim().equals("-1")) {
-                                    strGrade = "N/A";
-                            }
-
-                            DataTypeB data = new DataTypeB();
-                            data.setItem1(rs.getString(1));
-                            data.setItem2(rs.getString(2));
-                            data.setItem3(rs.getString(3));
-                            data.setItem4(rs.getString(4));
-                            data.setItem5(strGrade);
-
-
-                            System.out.println(rs.getString(1));
-                            System.out.println(rs.getString(2));
-                            list.add(data)
-
+                    // get the movies in wish list
+                    java.sql.ResultSet wishInfo = stmt1.executeQuery("SELECT * FROM Queued WHERE AccountID = '" + accountNum + "'");
+                    while(wishInfo.next()) {
+                        // get the data for every movie in the result set
+                        long movieId = wishInfo.getLong(2);
+                        Date date = wishInfo.getDate(3);
+                        java.sql.ResultSet movieInfo = stmt2.executeQuery("SELECT * FROM Movie WHERE ID = '" + wishInfo.getString(2) + "'");
+                        if(movieInfo.next()) {
+                            Movie movie = new Movie();
+                            movie.setId(movieId);
+                            movie.setTitle(movieInfo.getString(2));
+                            movie.setGenre(movieInfo.getString(3));
+                            movie.setFee(movieInfo.getDouble(4));
+                            movie.setCopies(movieInfo.getInt(5));
+                            movie.setRating(movieInfo.getInt(6));
+                            //movie.setDate(date);
+                            //movie.setOrderId(rentInfo.getLong(5));
+                            wishList.add(movie);
+                        }
                     }
-                    */
-
+                    
+                    // get best-seller list
+                    java.sql.ResultSet topInfo = stmt1.executeQuery("SELECT * FROM  PopularMovies");
+                    while(topInfo.next()) {
+                        // get the data for every movie in the result set
+                        long movieId = topInfo.getLong(2);
+                        //Date date = wishInfo.getDate(3);
+                        java.sql.ResultSet movieInfo = stmt2.executeQuery("SELECT * FROM Movie WHERE ID = '" + topInfo.getString(2) + "'");
+                        if(movieInfo.next()) {
+                            Movie movie = new Movie();
+                            movie.setId(movieId);
+                            movie.setTitle(movieInfo.getString(2));
+                            movie.setGenre(movieInfo.getString(3));
+                            movie.setFee(movieInfo.getDouble(4));
+                            movie.setCopies(movieInfo.getInt(5));
+                            movie.setRating(movieInfo.getInt(6));
+                            //movie.setDate(date);
+                            //movie.setOrderId(rentInfo.getLong(5));
+                            topList.add(movie);
+                        }
+                    }
+                    
+                    
             } catch (Exception e) {
                     e.printStackTrace();
 
@@ -138,7 +160,8 @@ public class CustomerInfoServlet extends HttpServlet {
             //customer.setFName(accountNum+" hhh");
             session.setAttribute("customerData", customer);
             session.setAttribute("rentList", rentList);
-            session.setAttribute("rentSize", rentList.size());
+            session.setAttribute("wishList", wishList);
+            session.setAttribute("topList", topList);
             RequestDispatcher view = request.getRequestDispatcher("CustomerInformation.jsp");
             view.forward(request, response);
     }
