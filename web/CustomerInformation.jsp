@@ -39,7 +39,9 @@
                             <span style="font-size: 10pt">Operation</span></td>
                         </tr>   
 
+                        <c:set var="count" value="0" scope="page" />
                         <c:forEach items="${rentList}" var="item">
+                            <c:set var="count" value="${count + 1}" scope="page"/>
                             <tr>
                                 <td style="width: 187px">
                                     <span style="font-size: 10pt">${item.title}</span></td>
@@ -48,7 +50,8 @@
                                 <td style="width: 74px">
                                     <span style="font-size: 10pt">${item.date}</span></td>
                                 <td>
-                                    <form name="myForm" action="delcourse" method="post">
+                                    <form name="myForm" action="ReturnServlet" method="post">
+                                        <input type="hidden" name="crscode" value=${count} >  
                                         <input id="ReturnRent" type="submit" value="Return" />
                                     </form>                        
                                 </td>

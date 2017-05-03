@@ -12,6 +12,10 @@
         <servlet-name>CustomerInfo</servlet-name>
         <servlet-class>users.CustomerInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReturnServlet</servlet-name>
+        <servlet-class>movieData.ReturnServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CustomerInfo</servlet-name>
         <url-pattern>/CustomerInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReturnServlet</servlet-name>
+        <url-pattern>/ReturnServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

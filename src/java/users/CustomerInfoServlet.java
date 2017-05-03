@@ -53,6 +53,7 @@ public class CustomerInfoServlet extends HttpServlet {
 
                     // get the customer id with account id
                     java.sql.Statement stmt1 = conn.createStatement();
+                    java.sql.Statement stmt2 = conn.createStatement();
                     java.sql.ResultSet accInfo = stmt1.executeQuery("SELECT Customer.ID, Account.Subscription, Account.Created from Account,Customer WHERE Customer.ID=Account.CustomerID and Account.ID='"+ accountNum + "'");
                     long cusId = -1;
                     if(accInfo.next()) {
@@ -85,7 +86,7 @@ public class CustomerInfoServlet extends HttpServlet {
                         // get the data for every movie in the result set
                         long movieId = rentInfo.getLong(2);
                         Date date = rentInfo.getDate(4);
-                        java.sql.ResultSet movieInfo = stmt1.executeQuery("SELECT * FROM Movie WHERE ID = '" + rentInfo.getString(2) + "'");
+                        java.sql.ResultSet movieInfo = stmt2.executeQuery("SELECT * FROM Movie WHERE ID = '" + rentInfo.getString(2) + "'");
                         if(movieInfo.next()) {
                             Movie movie = new Movie();
                             movie.setId(movieId);
