@@ -26,45 +26,30 @@
             <tr>
                 <!--Currently held movies-->
                 <td style="vertical-align: top; width: 11237px; text-align: left; height: 454px;">
+                    <p>Movies you're holding</p>
                     <table border="8" id="TABLE1" onclick="return TABLE1_onclick()">
                         <tr>
-                          <td style="width: 84px">
-                              <span style="font-size: 10pt">
-                              Course Code</span></td>
-                          <td style="width: 187px">
-                              <span style="font-size: 10pt">Course Name</span></td>
-                            <td style="width: 74px">
-                                <span style="font-size: 10pt">Department</span></td>
-                            <td>
-                                <span style="font-size: 10pt">Professor</span></td>
-                            <td style="width: 7px">
-                                <span style="font-size: 10pt">Grade</span></td>
-                            <td style="width: 7px">
-                                <span style="font-size: 10pt">Oper</span></td>
+                            <td style="width: 187px; text-align: center">
+                              <span style="font-size: 10pt">Movie Title</span></td>
+                            <td style="width: 74px; text-align: center">
+                                <span style="font-size: 10pt">Genre</span></td>
+                            <td style="width: 74px; text-align: center">
+                                <span style="font-size: 10pt">Order Date</span></td>
+                            <td style="width: 15px;text-align: center">
+                            <span style="font-size: 10pt">Operation</span></td>
                         </tr>   
 
-                        <c:forEach items="${list2}" var="item">
-
-
-                            <% String stuId = "" + session.getAttribute("login"); %>
-
-
+                        <c:forEach items="${rentList}" var="item">
                             <tr>
-                                <td style="width: 84px">
-                                    <span style="font-size: 10pt">${item.item1}</span></td>
                                 <td style="width: 187px">
-                                    <span style="font-size: 10pt">${item.item2}</span></td>
+                                    <span style="font-size: 10pt">${item.title}</span></td>
                                 <td style="width: 74px">
-                                    <span style="font-size: 10pt">${item.item3}</span></td>
-                                <td>
-                                    <span style="font-size: 10pt">${item.item4}</span></td>
-                                <td style="width: 7px">
-                                    <span style="font-size: 10pt">${item.item5}</span></td>
+                                    <span style="font-size: 10pt">${item.genre}</span></td>
+                                <td style="width: 74px">
+                                    <span style="font-size: 10pt">${item.date}</span></td>
                                 <td>
                                     <form name="myForm" action="delcourse" method="post">
-                                        <input type="hidden" name="userid" value=<%=stuId%>>
-                                        <input type="hidden" name="crscode" value=${item.item1} >  
-                                        <input id="Button2" type="submit" value="Delete" />
+                                        <input id="ReturnRent" type="submit" value="Return" />
                                     </form>                        
                                 </td>
                             </tr>      

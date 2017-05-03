@@ -7,6 +7,7 @@ package users;
 
 import movieData.*;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class CustomerInfoServlet extends HttpServlet {
             String mysUserID = "root";
             String mysPassword = "1234";
 
-            List<Movie> list = new ArrayList<Movie>();
+            List<Movie> rentList = new ArrayList<Movie>();
             Customer customer = new Customer();
             java.sql.Connection conn = null;
             try {
@@ -78,8 +79,26 @@ public class CustomerInfoServlet extends HttpServlet {
                         customer.setRating(cusInfo.getInt(10));
                     }
 
-
-
+                    // get the movies currently holding
+                    java.sql.ResultSet rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
+                    while(rentInfo.next()) {
+                        // get the data for every movie in the result set
+                        long movieId = rentInfo.getLong(2);
+                        Date date = rentInfo.getDate(4);
+                        java.sql.ResultSet movieInfo = stmt1.executeQuery("SELECT * FROM Movie WHERE ID = '" + rentInfo.getString(2) + "'");
+                        if(movieInfo.next()) {
+                            Movie movie = new Movie();
+                            movie.setId(movieId);
+                            movie.setTitle(movieInfo.getString(2));
+                            movie.setGenre(movieInfo.getString(3));
+                            movie.setFee(movieInfo.getDouble(4));
+                            movie.setCopies(movieInfo.getInt(5));
+                            movie.setRating(movieInfo.getInt(6));
+                            movie.setDate(date);
+                            rentList.add(movie);
+                        }
+                    }
+                    
                     /*String strGrade;
 
                     while (rs.next()) {
@@ -116,6 +135,8 @@ public class CustomerInfoServlet extends HttpServlet {
             }
             //customer.setFName(accountNum+" hhh");
             session.setAttribute("customerData", customer);
+            session.setAttribute("rentList", rentList);
+            session.setAttribute("rentSize", rentList.size());
             RequestDispatcher view = request.getRequestDispatcher("CustomerInformation.jsp");
             view.forward(request, response);
     }
