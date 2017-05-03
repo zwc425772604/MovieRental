@@ -83,6 +83,8 @@
                                 <td>
                                     <form name="myForm2" action="RentServlet" method="post">
                                         <input type="hidden" name="rentId" value=${item.id} >  
+                                        <input type="hidden" name="rentAccount" value=${customerData.account}>
+                                        <input type="hidden" name="rentType" value=${customerData.type}>
                                         <input id="Rent" type="submit" value="Rent" />
                                     </form>  
                                     <form name="myForm3" action="RemoveWishServlet" method="post">
@@ -122,6 +124,8 @@
                                     </form>
                                     <form name="myForm5" action="RentServlet" method="post">
                                         <input type="hidden" name="rentId" value=${item.id} >  
+                                        <input type="hidden" name="rentAccount" value=${customerData.account}>
+                                        <input type="hidden" name="rentType" value=${customerData.type}>
                                         <input id="Rent" type="submit" value="Rent" />
                                     </form>    
                                 </td>
