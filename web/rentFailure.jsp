@@ -26,6 +26,9 @@
                     <li>The UNLIMITED3 plan allows you to view 3 movie at-a-time and unlimited movies per month.</li>
                 </ul>
             </li>
+            <li>
+                <h2>The movie is not available at this time.</h2>
+            </li>
         </ol>
         <a href="CustomerInfoServlet">Back</a>
     </body>

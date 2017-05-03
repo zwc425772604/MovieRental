@@ -57,9 +57,7 @@ public class RentServlet extends HttpServlet {
             java.sql.Statement stmt2 = conn.createStatement();
 
             // Check if the customer can rent
-            // First check if he already hold the movie
-            // get the movies currently holding
-            
+            // First check if he already hold the movie            
             java.sql.ResultSet rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
             while(rentInfo.next()) {
                 // get the data for every movie in the result set
@@ -70,6 +68,8 @@ public class RentServlet extends HttpServlet {
             }
 
             // Then check account type limit
+            
+            // Then check if the movie still has available copies
             
             // If customer can rent, add entry in database table unconfirmed order
             
