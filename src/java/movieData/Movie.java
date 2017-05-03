@@ -6,6 +6,7 @@
 package movieData;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Movie implements Serializable{
     private double fee;
     private int copies;
     private int rating;
+    private Date date; // the date when the movie is ordered
     
     // getters
     public long getId() { return id; }
@@ -27,6 +29,7 @@ public class Movie implements Serializable{
     public double getFee() { return fee; }
     public int getCopies() { return copies; }
     public int getRating() { return rating; }
+    public Date getDate() { return date; }
     
     // setters
     public void setId(long id) { this.id = id; }
@@ -35,5 +38,6 @@ public class Movie implements Serializable{
     public void setFee(double fee) { this.fee = fee; }
     public void setCopies(int copies) { this.copies = copies; }
     public void setRating(int rating) { this.rating = rating; }
+    public void setDate(Date date) { this.date = date; }
     
 }

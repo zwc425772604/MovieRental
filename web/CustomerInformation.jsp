@@ -40,7 +40,7 @@
                                 <td style="width: 74px">
                                     <span style="font-size: 10pt">${item.genre}</span></td>
                                 <td style="width: 74px">
-                                    <span style="font-size: 10pt">${customerData.date}</span></td>
+                                    <span style="font-size: 10pt">${item.date}</span></td>
                                 <td>
                                     <form name="myForm" action="delcourse" method="post">
                                         <input id="ReturnRent" type="submit" value="Return" />

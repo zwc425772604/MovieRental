@@ -7,6 +7,7 @@ package users;
 
 import movieData.*;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,8 +84,9 @@ public class CustomerInfoServlet extends HttpServlet {
                     while(rentInfo.next()) {
                         // get the data for every movie in the result set
                         long movieId = rentInfo.getLong(2);
+                        Date date = rentInfo.getDate(4);
                         java.sql.ResultSet movieInfo = stmt1.executeQuery("SELECT * FROM Movie WHERE ID = '" + rentInfo.getString(2) + "'");
-                        while(movieInfo.next()) {
+                        if(movieInfo.next()) {
                             Movie movie = new Movie();
                             movie.setId(movieId);
                             movie.setTitle(movieInfo.getString(2));
@@ -92,6 +94,7 @@ public class CustomerInfoServlet extends HttpServlet {
                             movie.setFee(movieInfo.getDouble(4));
                             movie.setCopies(movieInfo.getInt(5));
                             movie.setRating(movieInfo.getInt(6));
+                            movie.setDate(date);
                             rentList.add(movie);
                         }
                     }
