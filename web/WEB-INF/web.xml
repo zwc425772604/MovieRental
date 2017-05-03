@@ -16,6 +16,10 @@
         <servlet-name>ReturnServlet</servlet-name>
         <servlet-class>movieData.ReturnServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RentServlet</servlet-name>
+        <servlet-class>movieData.RentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ReturnServlet</servlet-name>
         <url-pattern>/ReturnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RentServlet</servlet-name>
+        <url-pattern>/RentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
