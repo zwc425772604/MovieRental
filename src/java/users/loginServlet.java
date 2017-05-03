@@ -23,9 +23,9 @@ public class loginServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			 
-	ServletContext context= getServletContext();
+        ServletContext context= getServletContext();
         RequestDispatcher rd= context.getRequestDispatcher("/CustomerInfoServlet");
-	rd.forward(request, response);
+        rd.forward(request, response);
     }
 
     @Override

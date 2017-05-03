@@ -37,32 +37,6 @@ public class UserAddServlet extends HttpServlet {
 	
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        /* //This is testing customer message
-        String FName = request.getParameter("FirstName");
-        String LName = request.getParameter("LastName");
-        String address = request.getParameter("Address");
-        String email = request.getParameter("Email");
-        String city = request.getParameter("City");
-        String state = request.getParameter("State");
-        String zipStr = request.getParameter("Zip");
-        String phoneStr = request.getParameter("Telephone");
-        
-
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" + FName+LName+email+address+city+state+zipStr+phoneStr + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-        */
-        
-        
         String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
         String mysURL ="jdbc:mysql://127.0.0.1:3306/cse305";
         String mysUserID = "root"; 

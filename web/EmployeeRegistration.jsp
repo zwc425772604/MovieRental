@@ -153,8 +153,8 @@ function Button2_onclick() {
                 <input name="Telephone" class ="employer_telephone" type="text" /><br />
                
                 Select Your Position Here:<br />
-                <input id="Radio1" checked="checked" name="status" type="radio" value="MANAGER"/>&nbsp; Manager<br />
-                <input id="Radio2" name="status" type="radio"  value="CUSREP"/>&nbsp; Customer Representative<br/>
+                <input id="Radio1" checked="checked" name="status" type="radio" value="Manager"/>&nbsp; Manager<br />
+                <input id="Radio2" name="status" type="radio"  value="Customer Rep"/>&nbsp; Customer Representative<br/>
                 <br />
 
                     <input type="button" value="Finish!" onclick="Button1_onclick()">
