@@ -1,4 +1,6 @@
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="movieData.Movie"%>
 <%-- 
     Document   : searchResults
     Created on : May 2, 2017, 10:18:52 PM
@@ -7,13 +9,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.sql.*" %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Search Results</title>
     </head>
-   <body style="text-align: center" bgcolor="#ffff00">
+   <body style="text-align: center" bgcolor="aliceblue">
     <span style="font-size: 14pt; font-family: Arial"><strong>Searched Movies According
         to your Preference<br />
         <br />
@@ -23,6 +27,7 @@
                     <span style="font-size: 10pt">These are available movies based on your preference.<br />
                         &nbsp;<br />
                     </span><br />
+       
 
 <table border="8" id="TABLE1" onclick="return TABLE1_onclick()">
                     <tr>
@@ -39,42 +44,78 @@
                             <span style="font-size: 10pt">Rating</span></td>
                     </tr>
 
+             
+         <% 
+            String mysJDBCDriver = "com.mysql.jdbc.Driver";
+            String mysURL = "jdbc:mysql://127.0.0.1:3306/employee_testing";
+            String mysUserID = "root";
+            String mysPassword = "Zhao6288588@";
+            ArrayList<Movie> movies = new ArrayList<Movie>();
+             Movie mov = null;
+            java.sql.Connection conn = null;
+            try {
+                    Class.forName(mysJDBCDriver).newInstance();
+                    java.util.Properties sysprops = System.getProperties();
+                    sysprops.put("user", mysUserID);
+                    sysprops.put("password", mysPassword);
+
+                    // connect to the database
+                    conn = java.sql.DriverManager.getConnection(mysURL, sysprops);
+                    // get the customer id with account id
+                    if (request.getParameter("movie_type").trim() != "")
+                    {  
+                        String type = request.getParameter("movie_type");         
+                        java.sql.Statement stmt2 = conn.createStatement();  //query for searching by movie types
+                        java.sql.ResultSet movieInfo = stmt2.executeQuery("SELECT * FROM Movie M WHERE M.TotalCopies > 0 AND M.Genre='"+type +"'"); 
+                        while (movieInfo.next())
+                        { %>
+                        <tr>
+                            <td> <%= movieInfo.getString("Title")%> </td>
+                            <td> <%= movieInfo.getString("Genre")%> </td>
+                            <td> <%= movieInfo.getString("Fee")%> </td>
+                            <td> <%= movieInfo.getString("TotalCopies")%> </td>
+                            <td> <%= movieInfo.getString("Rating")%> </td>
+                        </tr>
+                        <%
+                        }
+                    }
+                    else if (request.getParameter("movie_keyword").trim() != "")
+                    {
+                        String key = request.getParameter("movie_keyword");
+                        java.sql.Statement stmt2 = conn.createStatement();
+                        String sql = "SELECT * FROM Movie M WHERE M.Title LIKE CONCAT('%', CONCAT('" + key + "', '%'))";
+                        java.sql.ResultSet movieInfo = stmt2.executeQuery(sql);
+                        while (movieInfo.next())
+                        { %>
+                         <tr>
+                            <td> <%= movieInfo.getString("Title")%> </td>
+                            <td> <%= movieInfo.getString("Genre")%> </td>
+                            <td> <%= movieInfo.getString("Fee")%> </td>
+                            <td> <%= movieInfo.getString("TotalCopies")%> </td>
+                            <td> <%= movieInfo.getString("Rating")%> </td>
+                        </tr>
+                        <%
+                        }
+                    }
 
 
- <c:forEach items="${list}" var="item">
+            } catch (Exception e) {
+                    e.printStackTrace();
+
+            } finally {
+
+                    try {
+                            conn.close();
+                    } catch (Exception ee) {
+                    }
+                    ;
+            }
+            
+        %>
+            
+
+                    
  
- 	
-      <% String stuId = "" + session.getValue("login"); %>
-     
-        
-        <tr>
-                      <td style="width: 84px">
-                          <span style="font-size: 10pt">${item.crscode}</span></td>
-                      <td style="width: 187px">
-                          <span style="font-size: 10pt"><c:out value="${item.crsname}" /></span></td>
-                        <td style="width: 74px">
-                            <span style="font-size: 10pt">${item.deptid}</span></td>
-                        <td>
-                            <span style="font-size: 10pt"><c:out value="${item.name}" /></span></td>
-                       
-                        	 <td>
-                        	 
-                        	 
-                        	 <form action="selected" method="post">
-                        	  <input type="hidden" name="userid" value=<%=stuId%>>
-  							  <input type="hidden" name="crscode" value=${item.crscode} >  
-                        	 <input id="Button2" type="submit" value="Submit" />
-							</form>
-
-
-         
-                        </td>	
-                    </tr>
-        
-        
-        
-        
-    </c:forEach>
                    </table> 
                     <br />
                     
