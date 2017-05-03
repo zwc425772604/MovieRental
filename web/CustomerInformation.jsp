@@ -51,7 +51,7 @@
                                     <span style="font-size: 10pt">${item.date}</span></td>
                                 <td>
                                     <form name="myForm" action="ReturnServlet" method="post">
-                                        <input type="hidden" name="crscode" value=${count} >  
+                                        <input type="hidden" name="returnindex" value=${count} >  
                                         <input id="ReturnRent" type="submit" value="Return" />
                                     </form>                        
                                 </td>

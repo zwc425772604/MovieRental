@@ -96,6 +96,7 @@ public class CustomerInfoServlet extends HttpServlet {
                             movie.setCopies(movieInfo.getInt(5));
                             movie.setRating(movieInfo.getInt(6));
                             movie.setDate(date);
+                            movie.setOrderId(rentInfo.getLong(5));
                             rentList.add(movie);
                         }
                     }

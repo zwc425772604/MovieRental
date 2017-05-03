@@ -21,6 +21,7 @@ public class Movie implements Serializable{
     private int copies;
     private int rating;
     private Date date; // the date when the movie is ordered
+    private long orderId;
     
     // getters
     public long getId() { return id; }
@@ -30,6 +31,7 @@ public class Movie implements Serializable{
     public int getCopies() { return copies; }
     public int getRating() { return rating; }
     public Date getDate() { return date; }
+    public long getOrderId() { return orderId; }
     
     // setters
     public void setId(long id) { this.id = id; }
@@ -39,5 +41,6 @@ public class Movie implements Serializable{
     public void setCopies(int copies) { this.copies = copies; }
     public void setRating(int rating) { this.rating = rating; }
     public void setDate(Date date) { this.date = date; }
+    public void setOrderId(long orderId) { this.orderId = orderId; }
     
 }
