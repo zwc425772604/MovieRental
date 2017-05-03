@@ -5,12 +5,7 @@
  */
 package movieData;
 
-import users.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -55,7 +50,7 @@ public class AddWishServlet extends HttpServlet {
             java.sql.Statement stmt = conn.createStatement();
             String wishId = request.getParameter("wishId");
             String wishAccount = request.getParameter("wishAccount");
-            stmt.executeUpdate("INSERT INTO Queued(AccountID, MovieID, DateAdded)" + " VALUES(" + wishAccount + "," + wishAccount + ", NULL )" );
+            stmt.executeUpdate("INSERT INTO Queued(AccountID, MovieID, DateAdded)" + " VALUES(" + wishAccount + "," + wishId + ", NULL )" );
             stmt.close();
         } catch(Exception e)
         {
