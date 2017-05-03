@@ -134,10 +134,12 @@
             </tr>
         </table>
     
-        <input id="Button1" type="button" value="Search Course" onclick="window.open('searchMovie.jsp','_self');" />
+        <input id="Button1" type="button" value="Search Movie" onclick="window.open('searchMovie.jsp','_self');" />
+        <input id="Button2" type="button" value="Account Settings" onclick=""/> 
+        <input id="Button3" type="button" value="Recomendation List" onclick=""/> 
+        <input id="Button4" type="button" value="Rental History" onclick=""/>          
         
-            
-        <input id="Button1" type="button" value="Logout" onclick="window.open('index.jsp','_self');" /><br />
+        <input id="Button5" type="button" value="Logout" onclick="window.open('index.jsp','_self');" /><br />
         <div class = "search_course" id ="search_box" style="display:none">
             <label> Search by keyword: </label>
             <input type ="text" id ="keyword"/>
