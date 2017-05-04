@@ -1,4 +1,3 @@
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="movieData.Movie"%>
 <%-- 
@@ -53,18 +52,14 @@
                       <td style="width: 50px">
                              <span style="font-size: 10pt">
                           Rating</span></td>
-                      <td style ="width:50px">
-                            <span style="font-size: 10pt">
-                          Rent?</span>
-                      </td>
-                    </tr>
+                     
 
              
          <% 
             String mysJDBCDriver = "com.mysql.jdbc.Driver";
             String mysURL = "jdbc:mysql://127.0.0.1:3306/cse305";
             String mysUserID = "root";
-            String mysPassword = "1234";
+            String mysPassword = "Zhao6288588@";
             java.sql.Connection conn = null;
             try {
                     Class.forName(mysJDBCDriver).newInstance();
@@ -80,6 +75,13 @@
                     java.sql.ResultSet movieInfo = stmt2.executeQuery(movie_by_type_sql); 
                     if (request.getParameter("movie_type").trim() != "")
                     {  
+                        %>
+                        <td style ="width:50px">
+                            <span style="font-size: 10pt">
+                          Rent?</span>
+                      </td>
+                    </tr>
+                        <%
                         //#TODO user may enter multiple keywords, so may execute the query multiple times
                         String type = request.getParameter("movie_type");         
                         //java.sql.Statement stmt2 = conn.createStatement();
@@ -116,6 +118,13 @@
                     }
                     if (request.getParameter("movie_keyword").trim() != "")
                     {
+                         %>
+                        <td style ="width:50px">
+                            <span style="font-size: 10pt">
+                          Rent?</span>
+                      </td>
+                    </tr>
+                        <%
                         String key = request.getParameter("movie_keyword");
                        // java.sql.Statement stmt2 = conn.createStatement(); //query for searching the movie by keyword eg. movie title
                      //   String sql = "SELECT * FROM Movie M WHERE M.Title LIKE CONCAT('%', CONCAT('" + key + "', '%'))";
@@ -132,7 +141,7 @@
                             <td> <%= movieInfo.getString("Fee")%> </td>
                             <td> <%= movieInfo.getString("TotalCopies")%> </td>
                             <td> <%= movieInfo.getString("AvailableCopies") %></td>
-                            <td> <%= movieInfo.getString(8) %></td>
+                            <td> <%= movieInfo.getString("Ratings") %></td>
                             <td>                                     
                                 <form name="myForm2" action="RentServlet" method="post">
                                     <input type="hidden" name="rentId" value=<%= movieInfo.getString("MovieID")%> >  
@@ -148,6 +157,29 @@
                     }
                     if (request.getParameter("movie_casted_actor").trim() != "")
                     {
+                     %>
+                        <td style ="width:50px">
+                            <span style="font-size: 10pt">
+                          Actor ID</span>
+                      </td>
+                      <td style ="width:50px">
+                            <span style="font-size: 10pt">
+                          First Name</span>
+                      </td>
+                      <td style ="width:50px">
+                            <span style="font-size: 10pt">
+                          Last Name</span>
+                      </td>
+                      <td style ="width:50px">
+                            <span style="font-size: 10pt">
+                          Actor Ratings</span>
+                      </td>
+                      <td style ="width:50px">
+                            <span style="font-size: 10pt">
+                          Rent?</span>
+                      </td>
+                    </tr>
+                        <%
                        String actor_name = request.getParameter("movie_casted_actor");
                         java.sql.Statement stmt4 = conn.createStatement();                                                                                                                                                                                                                                                                   
                         String stmt4_sql = "SELECT M.ID AS MovieID, M.Title, M.Genre, M.Rating AS MovieRating, A.ID AS ActorID, A.FirstName, A.LastName, A.Rating AS ActorRating FROM Movie M JOIN (Actor A JOIN Casted C ON A.ID = C.ActorID) ON M.ID = C.MovieID WHERE A.FirstName LIKE CONCAT('%', CONCAT('" + actor_name + "','%')) OR A.LastName LIKE CONCAT('%', CONCAT('" + actor_name + "','%'))";
@@ -170,7 +202,12 @@
                             <td> <%= movieInfo.getString("Fee")%> </td>
                             <td> <%= movieInfo.getString("TotalCopies")%> </td>
                             <td> <%= movieInfo.getString("AvailableCopies") %></td>
-                            <td> <%= movieInfo.getString(8) %></td>
+                            <td> <%= movieInfo.getString("Ratings") %></td>
+                            <td> <%= actor_info.getString("ActorID") %>
+                            <td> <%= actor_info.getString("FirstName") %>
+                            <td> <%= actor_info.getString("LastName") %>
+                            <td> <%= actor_info.getString("ActorRating") %>
+                                
                             <td>                                     
                                 <form name="myForm2" action="RentServlet" method="post">
                                     <input type="hidden" name="rentId" value=<%= movieInfo.getString("MovieID")%> >  
@@ -179,9 +216,6 @@
                                     <input id="Rent" type="submit" value="Yes" />
                                 </form>  
                             </td>
-                            <td> <%= actor_info.getString("ActorID") %>
-                            <td> <%= actor_info.getString("FirstName") %>
-                            <td> <%= actor_info.getString("LastName") %>
                             </tr>
                             <%
                                 }
