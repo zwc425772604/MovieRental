@@ -25,7 +25,7 @@
             {
                  //alert($(this).val());
                  $('div').hide();
-                 document.getElementById($(this).val()).style.display = "inline";s
+                 document.getElementById($(this).val()).style.display = "inline";
             });
             
             });
@@ -37,13 +37,13 @@
        
        
     <ul class = "action_list">
-    <li> <button class = "transcation" id = "add_movie" value = "add_movie_div">Add Movie</button></li>
-    <li><button class = "transcation" id = "edit_movie" value = "edit_movie_div">Edit Movie</button></li>
-    <li><button class = "transcation" id = "delete_movie" value = "delete_movie_div">Delete Movie</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_movie" value = "add_movie_div">Add Movie</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_movie" value = "edit_movie_div">Edit Movie</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_movie" value = "delete_movie_div">Delete Movie</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_employee" value = "add_employee_div">Add Employee</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_employee" value = "edit_employee_div">Edit Employee</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_employee" value = "delete_employee_div">Delete Employee</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "obtain_sales_report" value = "sales_report_div">Obtain Sales Report</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "obtain_sales_report" value = "sales_report_div" onclick="window.open('salesReport.jsp','_self');">Obtain Sales Report</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_all_movies" value = "lists_of_all_movies_div">List all movies</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_movies_by" value = "list_of_movie_rentals">List movie rentals</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_best_rep" value = "list_of_customer_rep_who_oversaw_most_rental">See Customer Rep that oversaw most rentals</button></li>
