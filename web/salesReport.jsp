@@ -102,7 +102,7 @@
                 
             </tr>
         </table>
-                            <input id="Button1" type="button" onclick="window.open('CustomerInfoServlet','_self');" value="Back" />
+                            <input id="Button1" type="button" onclick="window.open('EmployeeInfoServlet','_self');" value="Back" />
                     <input id="Button2" type="button" onclick="window.open('index.jsp','_self');" value="Logout" /><br />
                     
                     
