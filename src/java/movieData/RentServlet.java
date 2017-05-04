@@ -118,38 +118,16 @@ public class RentServlet extends HttpServlet {
                 if(mc>=3)
                     response.sendRedirect("rentFailure.jsp");
             }
-            
-            
-            
+                       
             // Then check if the movie still has available copies
+            java.sql.ResultSet availInfo = stmt1.executeQuery("SELECT * FROM AvailableMovies WHERE MovieID = '" + rentId + "' AND AvailableCopies > 0 " );
+            if(!availInfo.next()) {
+                response.sendRedirect("rentFailure.jsp");
+            }
             
             // If customer can rent, add entry in database table unconfirmed order
-            
-            /*String cusOrEmp = request.getParameter("group1");
-            session.setAttribute("cusOrEmp", cusOrEmp);
-            conn.setAutoCommit(false);
-            java.sql.Statement stmt1=conn.createStatement();
-            if (cusOrEmp.equals("customer")) {
-                session.setAttribute("login",username);
-                java.sql.ResultSet rs = stmt1.executeQuery(" SELECT * FROM Account where Id='"+username+"'");
-                if(rs.next()) {
-                    // login success as customer
-                    ServletContext context= getServletContext();
-                    RequestDispatcher rd= context.getRequestDispatcher("/CustomerInfoServlet");
-                    rd.forward(request, response);
-                } else {
-                    response.sendRedirect("loginFailure.jsp");
-                }
-            } else {
-                session.setAttribute("login",username);
-                java.sql.ResultSet rs = stmt1.executeQuery(" SELECT * FROM Employee where SSN='"+username+"'");
-                if(rs.next()) {
-                    // login success as employee
-                    response.sendRedirect("RegisterPage.jsp");
-                } else {
-                    response.sendRedirect("loginFailure.jsp");
-                }
-            }*/
+            stmt2.executeUpdate("INSERT INTO UnconfirmedOrder(AccountID, MovieID)" + " VALUES(" + account + "," + rentId + ")" );
+            response.sendRedirect("rentSuccess.jsp");
         } catch(Exception e){
             e.printStackTrace();
         } finally{
