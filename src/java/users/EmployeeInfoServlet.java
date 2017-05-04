@@ -37,7 +37,7 @@ public class EmployeeInfoServlet extends HttpServlet {
             String mysJDBCDriver = "com.mysql.jdbc.Driver";
             String mysURL = "jdbc:mysql://127.0.0.1:3306/cse305";
             String mysUserID = "root";
-            String mysPassword = "1234";
+            String mysPassword = "Zhao6288588@";
 
             //List<Movie> rentList = new ArrayList<Movie>();
             //List<Movie> wishList = new ArrayList<Movie>();
