@@ -33,7 +33,7 @@
     </div>
         
         <div id = "add_movie_div" style ="display:inline">
-            <!-- 加翻form action  -->
+            <!-- added form action  -->
             <h4> Add a new movie: </h4>
             <form action =" ">
                 <label> Enter Movie Name: </label> 

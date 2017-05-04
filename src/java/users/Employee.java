@@ -24,7 +24,7 @@ public class Employee extends Person{
     public Date getDate() { return date; }
 
     // Setters.
-    public void setRating(int wage) { this.wage = wage; }
+    public void setWage(int wage) { this.wage = wage; }
     public void setPosition(String position) { this.position = position; }
     public void setDate(Date date) { this.date = date; } 
 }

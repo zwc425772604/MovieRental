@@ -81,7 +81,9 @@ public class loginServlet extends HttpServlet {
                     java.sql.ResultSet rs = stmt1.executeQuery(" SELECT * FROM Employee where SSN='"+username+"'");
                     if(rs.next()) {
                         // login success as employee
-                        response.sendRedirect("RegisterPage.jsp");
+                        ServletContext context= getServletContext();
+                        RequestDispatcher rd= context.getRequestDispatcher("/EmployeeInfoServlet");
+			rd.forward(request, response);
                     } else {
                         response.sendRedirect("loginFailure.jsp");
                     }

@@ -32,6 +32,14 @@
         <servlet-name>CustomerEditSetting</servlet-name>
         <servlet-class>users.CustomerEditSetting</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RateServlet</servlet-name>
+        <servlet-class>movieData.RateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeInfoServlet</servlet-name>
+        <servlet-class>users.EmployeeInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>CustomerEditSetting</servlet-name>
         <url-pattern>/CustomerEditSetting</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RateServlet</servlet-name>
+        <url-pattern>/RateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeInfoServlet</servlet-name>
+        <url-pattern>/EmployeeInfoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
