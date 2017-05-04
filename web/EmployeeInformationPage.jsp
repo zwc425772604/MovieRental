@@ -4,6 +4,7 @@
     Author     : Weichao ZHao
 --%>
 
+<%@page import="users.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,18 +18,25 @@
        
     <div class = "left_sidebar">    
     <ul class = "action_list">
-    <li><button class = "transcation" id = "add_movie" value = "game1">Add Movie</button></li>
-    <li><button class = "transcation" id = "edit_movie" value = "game2">Edit Movie</button></li>
-    <li><button class = "transcation" id = "delete_movie" value = "game3">Delete Movie</button></li>
-    <li><button class = "transcation" id = "add_employee" value = "game4">Add Employee</button></li>
-    <li><button class = "transcation" id = "edit_employee" value = "game4">Edit Employee</button></li>
-    <li><button class = "transcation" id = "delete_employee" value = "game4">Delete Employee</button></li>
-    <li><button class = "transcation" id = "obtain_sales_report" value = "game4">Obtain Sales Report</button></li>
-    <li><button class = "transcation" id = "list_all_movies" value = "game4">List all movies</button></li>
-     <li><button class = "transcation" id = "list_movies_by" value = "game4">List movie rentals</button></li>
-    <li><button class = "transcation" id = "view_most_active_customers" value = "game4">View most active customers </button></li>
-    <li><button class = "transcation" id = "view_most_actively_rented_movie" value = "game4">View most actively rented movies </button></li>
-    <li><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Confirm Orders</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_movie" value = "game1">Add Movie</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_movie" value = "game2">Edit Movie</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_movie" value = "game3">Delete Movie</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_employee" value = "game4">Add Employee</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_employee" value = "game4">Edit Employee</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_employee" value = "game4">Delete Employee</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "obtain_sales_report" value = "game4">Obtain Sales Report</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_all_movies" value = "game4">List all movies</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_movies_by" value = "game4">List movie rentals</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_best_rep" value = "game4">See Customer Rep that oversaw most rentals</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_most_active_customers" value = "game4">View most active customers </button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_most_actively_rented_movie" value = "game4">View most actively rented movies </button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Confirm orders</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Produce customer mailing lists</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Produce a list of movie suggestions for a given customer</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Add a customer</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Edit a customer</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Delete a customer</button></li>
+    
     
     </ul> 
     </div>

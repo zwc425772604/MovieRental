@@ -18,7 +18,7 @@
                 <h2>The customer is currently holding this movie.</h2>
             </li>
             <li>
-                <h2>The customer has reached account limit:</h2>
+                <h2>The customer has reached account limit.</h2>
             </li>
             <li>
                 <h2>The movie is not available at this time.</h2>
