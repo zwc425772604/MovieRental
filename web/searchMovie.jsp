@@ -47,7 +47,7 @@
                     <span style="font-size: 8pt; font-family: Arial">
                      <br/>
                     <input id="Button3" type="submit" value="Submit" />&nbsp;
-                    <input id="Button1" type="button" value="Logout" onclick="window.open('index.htm','_self');" /><br />
+                    <input id="Button1" type="button" value="Logout" onclick="window.open('index.jsp','_self');" /><br />
                    
              
             </td>
