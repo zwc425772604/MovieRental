@@ -139,7 +139,7 @@
         </table>
     
         <input id="Button1" type="button" value="Search Movie" onclick="window.open('searchMovie.jsp','_self');" />
-        <input id="Button2" type="button" value="Account Settings" onclick=""/> 
+        <input id="Button2" type="button" value="Account Settings" onclick="window.open('customerAccount.jsp', '_self')"/> 
         <input id="Button3" type="button" value="Recomendation List" onclick=""/> 
         <input id="Button4" type="button" value="Rental History" onclick=""/>          
         

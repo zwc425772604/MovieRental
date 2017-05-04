@@ -131,7 +131,6 @@ function Button2_onclick() {
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                     <option value="AS">American Samoa</option>
-                    <option value="DC">District of Columbia</option>
                     <option value="FM">Micronesia</option>
                     <option value="GU">Guam</option>
                     <option value="MH">Marshall Islands</option>

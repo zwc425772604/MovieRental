@@ -28,6 +28,10 @@
         <servlet-name>RemoveWishServlet</servlet-name>
         <servlet-class>movieData.RemoveWishServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerEditSetting</servlet-name>
+        <servlet-class>users.CustomerEditSetting</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>RemoveWishServlet</servlet-name>
         <url-pattern>/RemoveWishServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerEditSetting</servlet-name>
+        <url-pattern>/CustomerEditSetting</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

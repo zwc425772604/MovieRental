@@ -1,39 +1,26 @@
-package users;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package users;
 
-
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-
-
-public class UserAddServlet extends HttpServlet {
-
-    public static String join(List<String> list, String delim) {
-
-        StringBuilder sb = new StringBuilder();
-
-	String loopDelim = "";
-
-	for(String s : list) {
-
-	    sb.append(loopDelim);
-	    sb.append(s);            
-
-	    loopDelim = delim;
-	}
-
-	return sb.toString();
-    }
-	
+/**
+ *
+ * @author ZheLin
+ */
+public class CustomerEditSetting extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
@@ -161,4 +148,5 @@ public class UserAddServlet extends HttpServlet {
         view.forward(request, response);    
 
     }
+
 }

@@ -10,38 +10,38 @@
 <head>
     <title>Registration for Customer</title>
     <link href="css/register_page.css" rel="stylesheet" type="text/css">
-<script language="javascript" type="text/javascript">
-// <!CDATA[
+    <script language="javascript" type="text/javascript">
+    // <!CDATA[
 
-function Button1_onclick() {
-    if(document.myForm.FirstName.value == "")
-        alert("Your First Name must not be null!!!")
-    else if(document.myForm.LastName.value == "")
-        alert("Your Last Name must not be null!!!") 
-    else if(document.myForm.Email.value == "")
-        alert("You Email must not be null!!!")
-    else if(document.myForm.Address.value == "")
-        alert("Your Address must not be null!!!")
-    else if(document.myForm.City.value == "")
-        alert("City must not be null!!!")
-    else if(document.myForm.State.value == "")
-        alert("State must not be null!!!")
-    else if(document.myForm.Zip.value.length != 5)
-        alert("Zip Code must 5 digits long!!!")
-    else if(document.myForm.Telephone.value.length != 10)
-        alert("Telephone must 10 digits long!!!")
-    else if(document.myForm.CreditCard.value.length != 16)
-        alert("Credit Card Number must be 16 digits long!!!")
-    else{document.myForm.submit()}
-}
+    function Button1_onclick() {
+        if(document.myForm.FirstName.value == "")
+            alert("Your First Name must not be null!!!")
+        else if(document.myForm.LastName.value == "")
+            alert("Your Last Name must not be null!!!") 
+        else if(document.myForm.Email.value == "")
+            alert("You Email must not be null!!!")
+        else if(document.myForm.Address.value == "")
+            alert("Your Address must not be null!!!")
+        else if(document.myForm.City.value == "")
+            alert("City must not be null!!!")
+        else if(document.myForm.State.value == "")
+            alert("State must not be null!!!")
+        else if(document.myForm.Zip.value.length != 5)
+            alert("Zip Code must 5 digits long!!!")
+        else if(document.myForm.Telephone.value.length != 10)
+            alert("Telephone must 10 digits long!!!")
+        else if(document.myForm.CreditCard.value.length != 16)
+            alert("Credit Card Number must be 16 digits long!!!")
+        else{document.myForm.submit()}
+    }
 
-function Button2_onclick() {
-    window.open("RegisterPage.jsp","_self");
+    function Button2_onclick() {
+        window.open("RegisterPage.jsp","_self");
 
-}
+    }
 
-// ]]>
-</script>
+    // ]]>
+    </script>
 </head>
 <body style="text-align: center" bgcolor="white">
 
@@ -127,7 +127,6 @@ function Button2_onclick() {
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                     <option value="AS">American Samoa</option>
-                    <option value="DC">District of Columbia</option>
                     <option value="FM">Micronesia</option>
                     <option value="GU">Guam</option>
                     <option value="MH">Marshall Islands</option>
