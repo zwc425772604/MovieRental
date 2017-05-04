@@ -51,7 +51,12 @@
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_most_actively_rented_movie" value = "list_of_active_rented_movies">View most actively rented movies </button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Confirm orders</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('customerMail.jsp','_self');">Produce customer mailing lists</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('suggestion.jsp','_self');">Produce a list of movie suggestions for a given customer</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>>
+        <form name="sugForm" action="recommendation2.jsp">
+            <input type="text" name="cusID">  
+            <input id="Rec" type="submit" value="Get Recommendation" />
+        </form>  
+    </li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('CustomerRegistration.jsp','_self');">Add a customer</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Edit a customer</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Delete a customer</button></li>
