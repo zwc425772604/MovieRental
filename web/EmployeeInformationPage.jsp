@@ -28,6 +28,7 @@
      <li><button class = "transcation" id = "list_movies_by" value = "game4">List movie rentals</button></li>
     <li><button class = "transcation" id = "view_most_active_customers" value = "game4">View most active customers </button></li>
     <li><button class = "transcation" id = "view_most_actively_rented_movie" value = "game4">View most actively rented movies </button></li>
+    <li><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Confirm Orders</button></li>
     
     </ul> 
     </div>

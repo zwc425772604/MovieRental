@@ -40,6 +40,10 @@
         <servlet-name>EmployeeInfoServlet</servlet-name>
         <servlet-class>users.EmployeeInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <servlet-class>movieData.ConfirmServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>EmployeeInfoServlet</servlet-name>
         <url-pattern>/EmployeeInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <url-pattern>/ConfirmServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
