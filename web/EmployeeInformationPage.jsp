@@ -37,7 +37,7 @@
        
        
     <ul class = "action_list">
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_movie" value = "add_movie_div">Add Movie</button></li>
+        <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_movie" value = "add_movie_div">Add Movie</button> <span id = "add_movie_message"></span></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_movie" value = "edit_movie_div">Edit Movie</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_movie" value = "delete_movie_div">Delete Movie</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_employee" value = "add_employee_div">Add Employee</button></li>
@@ -65,12 +65,12 @@
             <!-- 加翻form action  -->
             <h3> Add a new movie to the list</h3>
             <p> Please enter the following information about the movie:</p>
-            <form action =" ">
+            <form name = "myForm" action="ActionsOnMovies.jsp" method="post">
                 <label> Movie Name: </label> 
-                <input type = "text" id = "new_movie_name" value = "">
+                <input type = "text" name = "new_movie_name" value = "">
                 <br/>
                 <label> Movie Genre: </label>
-                <select id = "new_movie_genre">
+                <select name = "new_movie_genre">
                     <option value="Drama">Drama</option>
                     <option value="Comedy">Comedy</option>
                     <option value="Action">Action</option>
@@ -78,12 +78,12 @@
                 </select>
                 <br/>
                  <label> Movie Fee: </label>
-                <input type ="number" id ="new_movie_fee" value = "">
+                <input type ="number" name ="new_movie_fee" value = "">
                 <br/>
                  <label> Total Copies of the  new Movie: </label>
-                <input type ="number" id ="new_movie_copies" value = "">
+                <input type ="number" name ="new_movie_copies" value = "">
                 <br/>
-                <input type ="submit" id ="submit_button">
+                <input name = "add_movie_button"  type ="submit" id ="submit_button">
              </form>
         </div>
         <br/>
@@ -92,34 +92,34 @@
         <div id = "edit_movie_div" style ="display:none">
             <h3>Edit an existing movie information</h3>
             <p> Please enter the following information about the movie:</p>
-             <form action =" ">
+             <form name = "myForm" action="ActionsOnMovies.jsp"  target="_blank" method="post">
                 <label> Movie ID: </label> 
-                <input type = "number" id = "edit_movie_id" value = "">
+                <input type = "number" name = "edit_movie_id" value = "">
                 <br/>
                 <label> Movie Attribute: </label>
-                <input type ="text" id ="edit_movie_attr" value = "">
+                <input type ="text" name ="edit_movie_attr" value = "">
                 <br/>
                  <label> Movie New Value: </label>
-                <input type ="text" id ="new_movie_value" value = "">
+                <input type ="text" name ="new_movie_value" value = "">
                 <br/>
-                <input type ="submit" id ="submit_button">
+                <input type ="submit" name ="edit_movie_button" id ="submit_button">
  
               </form>
         </div>
          <div id = "delete_movie_div" style ="display:none">
              <h3>Delete an existing movie from the list</h3>
             <p> Please enter the following information about the movie:</p>
-             <form action =" ">
+             <form name = "myForm" action= "ActionsOnMovies.jsp" method="post">
                 <label> Movie ID: </label> 
-                <input type = "number" id = "delete_movie_id">
+                <input type = "number" name ="delete_movie_by_id" id = "delete_movie_id">
                 <br/>
-                <input type ="submit" id ="submit_button">
+                <input type ="submit" name ="delete_movie_button" id ="submit_button">
  
               </form>
         </div>
         
         <div id = "add_employee_div" style ="display:none">
-            <!-- 加翻form action  -->
+           
             <h3> Add a new employee</h3>
             <p> Please enter the following information about the new employee:</p>
             <form action ="MaddE" method = "post">
