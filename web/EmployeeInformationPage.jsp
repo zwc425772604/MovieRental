@@ -27,6 +27,10 @@
                  $('div').hide();
                  document.getElementById($(this).val()).style.display = "inline";
             });
+            $("#view_most_active_customers").click(function()
+            {
+                $('#list_of_active_customers').load('mostActiveCustomer.jsp');
+            });
             
             });
  
