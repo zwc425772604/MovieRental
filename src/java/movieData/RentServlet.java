@@ -57,7 +57,7 @@ public class RentServlet extends HttpServlet {
             conn=java.sql.DriverManager.getConnection(mysURL,sysprops);
             java.sql.Statement stmt1 = conn.createStatement();
             java.sql.Statement stmt2 = conn.createStatement();
-
+            boolean available = true;
             // Check if the customer can rent
             // First check if he already hold the movie            
             java.sql.ResultSet rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
@@ -65,6 +65,7 @@ public class RentServlet extends HttpServlet {
                 // get the data for every movie in the result set
                 String movieId = rentInfo.getString(2);
                 if(movieId.equals(rentId)) {
+                    available = false;
                     response.sendRedirect("rentFailure.jsp");
                 }
             }
@@ -91,12 +92,15 @@ public class RentServlet extends HttpServlet {
                     if(sameMonth) 
                         canAdd = false;
                 }  
-                if(!canAdd)
+                if(!canAdd) {
+                    available = false;
                     response.sendRedirect("rentFailure.jsp");
+                }
             } else if(type.equals("Unlimited")) {
                 //Check currently holding number
                 rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
                 if(rentInfo.next()) {
+                    available = false;
                     response.sendRedirect("rentFailure.jsp");
                 }
             } else if(type.equals("Unlimited+")) {
@@ -106,8 +110,10 @@ public class RentServlet extends HttpServlet {
                 while(rentInfo.next()) {
                     mc++;
                 }
-                if(mc>=2)
+                if(mc>=2){
+                    available = false;
                     response.sendRedirect("rentFailure.jsp");
+                }
             } else {
                 //Check currently holding number
                 int mc = 0;
@@ -115,19 +121,24 @@ public class RentServlet extends HttpServlet {
                 while(rentInfo.next()) {
                     mc++;
                 }
-                if(mc>=3)
+                if(mc>=3){
+                    available = false;
                     response.sendRedirect("rentFailure.jsp");
+                }
             }
                        
             // Then check if the movie still has available copies
             java.sql.ResultSet availInfo = stmt1.executeQuery("SELECT * FROM AvailableMovies WHERE MovieID = '" + rentId + "' AND AvailableCopies > 0 " );
             if(!availInfo.next()) {
+                available = false;
                 response.sendRedirect("rentFailure.jsp");
             }
             
             // If customer can rent, add entry in database table unconfirmed order
-            stmt2.executeUpdate("INSERT INTO UnconfirmedOrder(AccountID, MovieID)" + " VALUES(" + account + "," + rentId + ")" );
-            response.sendRedirect("rentSuccess.jsp");
+            if(available){
+                response.sendRedirect("rentSuccess.jsp");
+                stmt2.executeUpdate("INSERT INTO UnconfirmedOrder(AccountID, MovieID)" + " VALUES(" + account + "," + rentId + ")" );
+            }
         } catch(Exception e){
             e.printStackTrace();
         } finally{

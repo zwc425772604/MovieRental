@@ -101,6 +101,14 @@
                             <td> <%= movieInfo.getString(5)%> </td>
                             <td> <%= movieInfo.getString(7)%> </td>
                             <td> <%= movieInfo.getString(8)%> </td>
+                            <td>                                     
+                                <form name="myForm2" action="RentServlet" method="post">
+                                    <input type="hidden" name="rentId" value=<%= movieInfo.getString("MovieID")%> >  
+                                    <input type="hidden" name="rentAccount" value=${customerData.account}>
+                                    <input type="hidden" name="rentType" value=${customerData.type}>
+                                    <input id="Rent" type="submit" value="Yes" />
+                                </form>  
+                            </td>
                         </tr>
                         <%
                         }
@@ -125,7 +133,14 @@
                             <td> <%= movieInfo.getString("TotalCopies")%> </td>
                             <td> <%= movieInfo.getString("AvailableCopies") %></td>
                             <td> <%= movieInfo.getString(8) %></td>
-                            <td> <input id="rentButton" type="submit" value="Yes" />  </td>
+                            <td>                                     
+                                <form name="myForm2" action="RentServlet" method="post">
+                                    <input type="hidden" name="rentId" value=<%= movieInfo.getString("MovieID")%> >  
+                                    <input type="hidden" name="rentAccount" value=${customerData.account}>
+                                    <input type="hidden" name="rentType" value=${customerData.type}>
+                                    <input id="Rent" type="submit" value="Yes" />
+                                </form>  
+                            </td>
                         </tr>
                         <%
                         }
@@ -156,7 +171,14 @@
                             <td> <%= movieInfo.getString("TotalCopies")%> </td>
                             <td> <%= movieInfo.getString("AvailableCopies") %></td>
                             <td> <%= movieInfo.getString(8) %></td>
-                            <td> <input id="rentButton" type="submit" value="Yes" />  </td>
+                            <td>                                     
+                                <form name="myForm2" action="RentServlet" method="post">
+                                    <input type="hidden" name="rentId" value=<%= movieInfo.getString("MovieID")%> >  
+                                    <input type="hidden" name="rentAccount" value=${customerData.account}>
+                                    <input type="hidden" name="rentType" value=${customerData.type}>
+                                    <input id="Rent" type="submit" value="Yes" />
+                                </form>  
+                            </td>
                             <td> <%= actor_info.getString("ActorID") %>
                             <td> <%= actor_info.getString("FirstName") %>
                             <td> <%= actor_info.getString("LastName") %>
