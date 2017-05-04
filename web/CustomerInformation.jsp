@@ -140,8 +140,8 @@
     
         <input id="Button1" type="button" value="Search Movie" onclick="window.open('searchMovie.jsp','_self');" />
         <input id="Button2" type="button" value="Account Settings" onclick="window.open('customerAccount.jsp', '_self')"/> 
-        <input id="Button3" type="button" value="Recomendation List" onclick=""/> 
-        <input id="Button4" type="button" value="Rental History" onclick=""/>          
+        <input id="Button3" type="button" value="Recomendation List" onclick="window.open('recommendation.jsp', '_self')"/> 
+        <input id="Button4" type="button" value="Rental History" onclick="window.open('rentalHistory.jsp', '_self')"/>          
         
         <input id="Button5" type="button" value="Logout" onclick="window.open('index.jsp','_self');" /><br />
         <div class = "search_course" id ="search_box" style="display:none">
