@@ -52,6 +52,10 @@
         <servlet-name>MeditE</servlet-name>
         <servlet-class>users.MeditE</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MdelE</servlet-name>
+        <servlet-class>users.MdelE</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -96,13 +100,17 @@
         <servlet-name>ConfirmServlet</servlet-name>
         <url-pattern>/ConfirmServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
-    <servlet-name>MaddE</servlet-name>
+    <servlet-mapping>
+        <servlet-name>MaddE</servlet-name>
         <url-pattern>/MaddE</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
-    <servlet-name>MeditE</servlet-name>
+    <servlet-mapping>
+        <servlet-name>MeditE</servlet-name>
         <url-pattern>/MeditE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MdelE</servlet-name>
+        <url-pattern>/MdelE</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

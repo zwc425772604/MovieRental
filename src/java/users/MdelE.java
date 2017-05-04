@@ -15,7 +15,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 
-public class MeditE extends HttpServlet {
+public class MdelE extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,16 +37,11 @@ public class MeditE extends HttpServlet {
 
           
             // get parameters
-            String ssnStr = request.getParameter("edit_employee_ssn");
-            String attr = request.getParameter("edit_employee_attr");
-            String val = request.getParameter("edit_employee_new_value");
-
+            String ssnStr = request.getParameter("delete_employee_ssn");
 
             // add to employee table and person table
-            java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditEmployee(?, ?, ?)}");
+            java.sql.CallableStatement stmt = conn.prepareCall("{CALL DeleteEmployee(?)}");
             stmt.setLong(1, Long.parseLong(ssnStr));
-            stmt.setString(2, attr);
-            stmt.setString(3, "\'"+val+"\'");
 
             stmt.execute();
             stmt.close();

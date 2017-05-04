@@ -75,7 +75,6 @@ public class MaddE extends HttpServlet {
 
             stmt.execute();
             stmt.close();
-            request.setAttribute("accountNum", ssnStr);
 
         } catch(Exception e) {
             e.printStackTrace();
@@ -85,7 +84,7 @@ public class MaddE extends HttpServlet {
         }
 
 
-        RequestDispatcher view = request.getRequestDispatcher("regSuccess.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("EmployeeInfoServlet");
         view.forward(request, response);    
 
     }

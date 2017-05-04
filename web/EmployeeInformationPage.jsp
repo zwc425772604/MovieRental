@@ -260,9 +260,9 @@
         <div id = "delete_employee_div" style ="display:none">
              <h3>Delete an employee from the list</h3>
             <p> Please enter the following information about the employee:</p>
-             <form action =" ">
+             <form action ="MdelE" method="post">
                 <label> Employee SSN: </label> 
-                <input type = "number" id = "delete_employee_ssn">
+                <input type = "number" name = "delete_employee_ssn">
                 <br/>
                 <input type ="submit" id ="submit_button">
  
