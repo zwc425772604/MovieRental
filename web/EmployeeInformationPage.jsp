@@ -31,6 +31,10 @@
             {
                 $('#list_of_active_customers').load('mostActiveCustomer.jsp');
             });
+            $("#view_most_actively_rented_movie").click(function()
+            {
+                $('#list_of_active_rented_movies').load('mostRentedMovies.jsp');
+            });
             
             });
  
