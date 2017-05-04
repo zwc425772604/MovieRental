@@ -30,6 +30,12 @@
                 <table align="center" border="8" id="TABLE1" onclick="return TABLE1_onclick()">
   
                     <tr>
+                       <td style="width: 150px">
+                          <span style="font-size: 10pt">
+                          Order Id</span></td>
+                        <td style="width: 150px">
+                          <span style="font-size: 10pt">
+                          Order Date</span></td>
                       <td style="width: 150px">
                           <span style="font-size: 10pt">
                           Movie Title</span></td>
@@ -66,6 +72,8 @@
 
                             %>
                         <tr>
+                            <td> <%= movieInfo.getString(2)%> </td>
+                            <td> <%= movieInfo.getString(7)%> </td>
                             <td> <%= movieInfo.getString(4)%> </td>
                             <td> <%= movieInfo.getString(5)%> </td>
                             <td>                                     
