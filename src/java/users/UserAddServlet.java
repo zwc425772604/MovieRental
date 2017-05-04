@@ -131,7 +131,7 @@ public class UserAddServlet extends HttpServlet {
                 int wage = Integer.parseInt(wageStr);
                 java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
                 
-                // add to customer table and person table
+                // add to employee table and person table
                 java.sql.CallableStatement stmt = conn.prepareCall("{call AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
                 stmt.setString(1, position);
                 stmt.setLong(2, ssn);

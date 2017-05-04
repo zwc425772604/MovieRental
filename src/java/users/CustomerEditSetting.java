@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,104 +39,150 @@ public class CustomerEditSetting extends HttpServlet {
 
             //connect to the database
             conn=java.sql.DriverManager.getConnection(mysURL,sysprops);
+   
+            // get parameters
+            String FName = request.getParameter("FirstName");
+            String LName = request.getParameter("LastName");
+            String address = request.getParameter("Address");
+            String email = request.getParameter("Email");
+            String city = request.getParameter("City");
+            String state = request.getParameter("State");
+            String zipStr = request.getParameter("Zip");
+            String phoneStr = request.getParameter("Telephone");
+            String creditStr = request.getParameter("CreditCard");
+            String accType = request.getParameter("status");
 
-            if (request.getParameter("target").trim().equals("customer")) {
-                // get parameters
-                String FName = request.getParameter("FirstName");
-                String LName = request.getParameter("LastName");
-                String address = request.getParameter("Address");
-                String email = request.getParameter("Email");
-                String city = request.getParameter("City");
-                String state = request.getParameter("State");
-                String zipStr = request.getParameter("Zip");
-                String phoneStr = request.getParameter("Telephone");
-                String creditStr = request.getParameter("CreditCard");
-                String accType = request.getParameter("status");
-                
-                int zip = Integer.parseInt(zipStr);
-                long phone = Long.parseLong(phoneStr);
-                long credit = Long.parseLong(creditStr);
-                java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-                
-                // add to customer table and person table
-                java.sql.CallableStatement stmt = conn.prepareCall("{call AddCustomer(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
-                stmt.setString(1, FName);
-                stmt.setString(2, LName);
-                stmt.setString(3, address);
-                stmt.setString(4, city);
-                stmt.setString(5, state);
-                stmt.setInt(6, zip);
-                stmt.setLong(7, phone);
-                stmt.setString(8, email);
-                stmt.setLong(9, credit);
+            int zip = Integer.parseInt(zipStr);
+            long phone = Long.parseLong(phoneStr);
+            long credit = Long.parseLong(creditStr);
+            java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
 
+            // get original customer datas
+            HttpSession session = request.getSession();
+            Customer customer = (Customer) session.getAttribute("customerData");
+            long cusId =customer.getId();
+            
+            // update fields if needed
+            if(!customer.getFName().equals(FName)){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "FirstName");
+                stmt.setString(3, "\'"+FName+"\'");
                 stmt.execute();
                 stmt.close();
-
-                // add to account table
-                java.sql.Statement stmt1 = conn.createStatement();
-                String cusStr = "";
-                java.sql.ResultSet rs = stmt1.executeQuery("SELECT Customer.ID from Customer, Person WHERE Customer.ID = Person.ID AND Person.FirstName='"+ FName + "' AND Person.LastName='" + LName + "' AND Person.Address='" + address + "' AND Person.City='" + city + "' AND Person.State='" + state + "' AND Person.zip='" + zip + "'");
-                if (rs.next()) {
-                    cusStr = rs.getString(1);
-                }
-                stmt1.close();
-                long cusID = Long.parseLong(cusStr);
-                java.sql.CallableStatement stmt2 = conn.prepareCall("{call createAccount(?, ?, ?)}");
-                stmt2.setLong(1, cusID);
-                stmt2.setString(2, accType);
-                stmt2.setDate(3, date);
-                
-                stmt2.execute();
-                stmt2.close();
-                
-                // Get the account id for customer to login
-                java.sql.Statement stmt3 = conn.createStatement();
-                String accountStr = "";
-                java.sql.ResultSet rs1 = stmt3.executeQuery("SELECT Account.ID from Account, Customer WHERE Customer.ID = Account.CustomerID AND Customer.ID='"+ cusID + "'");
-                if (rs1.next()) {
-                    accountStr = rs1.getString(1);
-                }
-                stmt3.close();
-                request.setAttribute("accountNum", accountStr);
-                
-            } else {
-                // get parameters
-                String FName = request.getParameter("FirstName");
-                String LName = request.getParameter("LastName");
-                String address = request.getParameter("Address");
-                String city = request.getParameter("City");
-                String state = request.getParameter("State");
-                String zipStr = request.getParameter("Zip");
-                String phoneStr = request.getParameter("Telephone");
-                String ssnStr = request.getParameter("SSN");
-                String wageStr = request.getParameter("Wage");
-                String position = request.getParameter("status");
-                
-                int zip = Integer.parseInt(zipStr);
-                long phone = Long.parseLong(phoneStr);
-                long ssn = Long.parseLong(ssnStr);
-                int wage = Integer.parseInt(wageStr);
-                java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-                
-                // add to customer table and person table
-                java.sql.CallableStatement stmt = conn.prepareCall("{call AddEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
-                stmt.setString(1, position);
-                stmt.setLong(2, ssn);
-                stmt.setString(3, FName);
-                stmt.setString(4, LName);
-                stmt.setString(5, address);
-                stmt.setString(6, city);
-                stmt.setString(7, state);
-                stmt.setInt(8, zip);
-                stmt.setLong(9, phone);
-                stmt.setDate(10, date);
-                stmt.setInt(11, wage);
-
-                stmt.execute();
-                stmt.close();
-                request.setAttribute("accountNum", ssnStr);
+                // update the session's bean
+                customer.setFName(FName);
             }
+            if(!customer.getLName().equals(LName)){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "LastName");
+                stmt.setString(3, "\'"+LName+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setLName(LName);
+            }
+            
+            if(!customer.getEmail().equals(email)){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "Email");
+                stmt.setString(3, "\'"+email+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setEmail(email);
+            }
+            
+            if(!customer.getAddress().equals(address)){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "Address");
+                stmt.setString(3, "\'"+address+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setAddress(address);
+            }
+                        
+            if(!customer.getCity().equals(city)){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "City");
+                stmt.setString(3, "\'"+city+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setCity(city);  
+            }
+             
+            if(!customer.getState().equals(state)){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "State");
+                stmt.setString(3, "\'"+state+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setState(state); 
+            }
+            
+            if(customer.getZip() != zip){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "Zip");
+                stmt.setString(3, "\'"+zipStr+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setZip(zip); 
+            }
+                        
+            if(customer.getPhone() != phone){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "Phone");
+                stmt.setString(3, "\'"+phoneStr+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setPhone(phone); 
+            }
+                                    
+            if(customer.getCard() != credit){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditCustomer(?,?,?)}");
+                stmt.setLong(1, cusId);
+                stmt.setString(2, "CreditCard");
+                stmt.setString(3, "\'"+creditStr+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setCard(credit); 
+            }
+            
+            if(customer.getType() != accType){
+                // update database               
+                java.sql.CallableStatement stmt = conn.prepareCall("{CALL EditAccount(?,?,?)}");
+                stmt.setLong(1, customer.getAccount());
+                stmt.setString(2, "Subscription");
+                stmt.setString(3, "\'"+accType+"\'");
+                stmt.execute();
+                stmt.close();
+                // update the session's bean
+                customer.setType(accType); 
+            }
+                        
+                               
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -144,7 +191,7 @@ public class CustomerEditSetting extends HttpServlet {
         }
 
 
-        RequestDispatcher view = request.getRequestDispatcher("regSuccess.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("CustomerInfoServlet");
         view.forward(request, response);    
 
     }
