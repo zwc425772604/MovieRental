@@ -124,31 +124,28 @@
             <p> Please enter the following information about the new employee:</p>
             <form action ="MaddE" method = "post">
                 <label> Positions: </label> 
-                <select id ="new_employee_position">
+                <select name="status1">
                     <option value ="Manager">Manager</option>
                     <option value ="Customer Rep">Customer Rep</option>
                 </select>
                 <br/>
                 <label> Employee SSN: </label>
-                <input type ="number" id ="new_employee_SSN" placeholder ="  9-digit">
+                <input type ="number" name="SSN1" placeholder ="  9-digit">
                 <br/>
                 <label> Employee First Name: </label>
-                <input type ="text" id ="new_employee_first_name">
+                <input type ="text" name="FirstName1">
                 <br/>
                 <label> Employee Last Name: </label>
-                <input type ="text" id ="new_employee_last_name">
-                <br/>
-                <label> Employee Address: </label>
-                <input type ="text" id ="new_employee_last_name">
+                <input type ="text" name="LastName1">
                 <br/>
                 <label> City: </label>
-                <input type ="text" id ="new_employee_last_name">
+                <input type ="text" name="City1">
                 <br/>
                 <label> Address: </label>
-                <input type ="text" id ="new_employee_last_name">
+                <input type ="text" name="Address1">
                 <br/>
                 <label> States: </label>
-                <select name="State" id = "new_employee_state">
+                <select name="State1">
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -215,17 +212,14 @@
                 </select>
                 <br/>
                 <label> Zip Code: </label>
-                <input type ="number" id ="new_employee_zip_code" placeholder =" 5-digit ">
+                <input type ="number" name="Zip1" placeholder =" 5-digit ">
                 <br/>
                 <br/>
                 <label> Phone Number: </label>
-                <input type ="number" id ="new_employee_phone_number" placeholder =" 10-digit ">
+                <input type ="number" name="Telephone1" placeholder =" 10-digit ">
                 <br/>
-                <label> Start Date: </label>
-                <input type ="date" id ="new_employee_start_date">
-                <br/>
-                <label> Wage: </label>
-                <input type ="number" id ="new_employee_wage">
+                <label> Hourly Rate: </label>
+                <input type ="number" name="Wage1">
                 <br/>              
                 
                 <input type ="submit" id ="submit_button">

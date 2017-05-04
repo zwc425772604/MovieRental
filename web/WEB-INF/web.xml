@@ -44,6 +44,14 @@
         <servlet-name>ConfirmServlet</servlet-name>
         <servlet-class>movieData.ConfirmServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MaddE</servlet-name>
+        <servlet-class>users.MaddE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MeditE</servlet-name>
+        <servlet-class>users.MeditE</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>ConfirmServlet</servlet-name>
         <url-pattern>/ConfirmServlet</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+    <servlet-name>MaddE</servlet-name>
+        <url-pattern>/MaddE</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+    <servlet-name>MeditE</servlet-name>
+        <url-pattern>/MeditE</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
