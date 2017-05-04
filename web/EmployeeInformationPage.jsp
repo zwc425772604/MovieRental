@@ -229,24 +229,25 @@
         <div id ="edit_employee_div" style="display:none">
              <h3>Edit information of an employee</h3>
             <p> Please enter the following information about the new changes:</p>
-             <form action =" ">
+             <form action ="MeditE" method="post">
                 <label> Employee SSN: </label> 
-                <input type = "number" id = "edit_employee_ssn">
+                <input type = "number" name = "edit_employee_ssn">
                 <br/>
                 <label> Attribute: </label> 
-                <select id ="edit_employee_attr">
-                    <option value ="FirstName">ID</option>
-                    <option value ="LastName">FirstName</option>
+                <select name ="edit_employee_attr">
+                    <option value ="FirstName">FirstName</option>
                     <option value ="LastName">LastName</option>
                     <option value ="Address">Address</option>
                     <option value ="City">City</option>
                     <option value ="State">State</option>
                     <option value ="Zip">Zip</option>
                     <option value ="Phone">Phone</option>
+                    <option value ="HourlyRate">Wage</option>
+                    <option value ="Position">Position</option>
                 </select>
                 <br/>
                 <label> New Value: </label> 
-                <input type = "text" id = "edit_employee_new_value">
+                <input type = "text" name = "edit_employee_new_value">
                 <br/>
                         
                 <input type ="submit" id ="submit_button">
