@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -34,6 +35,7 @@ public class RentServlet extends HttpServlet {
         HttpSession session=request.getSession();  
         String rentId = request.getParameter("rentId");
         String account = request.getParameter("rentAccount");
+        String type = request.getParameter("rentType");
         long accountNum = Long.parseLong(account);
         String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
         String mysURL ="jdbc:mysql://127.0.0.1:3306/cse305";  //cse305 is the database name
@@ -68,6 +70,56 @@ public class RentServlet extends HttpServlet {
             }
 
             // Then check account type limit
+            if(type.equals("Limited")) {
+                boolean canAdd = true;
+                //Check currently holding number
+                rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
+                if(rentInfo.next()) {
+                    canAdd = false;
+                }
+                //Check month limit
+                Date date1 = new Date(Calendar.getInstance().getTimeInMillis());
+                Date date2;
+                Calendar cal1 = Calendar.getInstance();
+                Calendar cal2 = Calendar.getInstance();
+                cal1.setTime(date1);
+                rentInfo = stmt1.executeQuery("SELECT OrderDate FROM RentalHistory WHERE AccountID = '" + accountNum + "'");
+                while(rentInfo.next()) {
+                    date2 = rentInfo.getDate(1);
+                    cal2.setTime(date2);
+                    boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+                    if(sameMonth) 
+                        canAdd = false;
+                }  
+                if(!canAdd)
+                    response.sendRedirect("rentFailure.jsp");
+            } else if(type.equals("Unlimited")) {
+                //Check currently holding number
+                rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
+                if(rentInfo.next()) {
+                    response.sendRedirect("rentFailure.jsp");
+                }
+            } else if(type.equals("Unlimited+")) {
+                //Check currently holding number
+                int mc = 0;
+                rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
+                while(rentInfo.next()) {
+                    mc++;
+                }
+                if(mc>=2)
+                    response.sendRedirect("rentFailure.jsp");
+            } else {
+                //Check currently holding number
+                int mc = 0;
+                rentInfo = stmt1.executeQuery("SELECT * FROM CurrentRentals WHERE AccountID = '" + accountNum + "'");
+                while(rentInfo.next()) {
+                    mc++;
+                }
+                if(mc>=3)
+                    response.sendRedirect("rentFailure.jsp");
+            }
+            
+            
             
             // Then check if the movie still has available copies
             
