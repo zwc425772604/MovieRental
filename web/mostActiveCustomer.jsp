@@ -52,7 +52,7 @@
             String mysJDBCDriver = "com.mysql.jdbc.Driver";
             String mysURL = "jdbc:mysql://127.0.0.1:3306/cse305";
             String mysUserID = "root";
-            String mysPassword = "Zhao6288588@";
+            String mysPassword = "1234";
             java.sql.Connection conn = null;
             try {
                     Class.forName(mysJDBCDriver).newInstance();
