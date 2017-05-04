@@ -62,8 +62,18 @@
         </form>  
     </li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('CustomerRegistration.jsp','_self');">Add a customer</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Edit a customer</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Delete a customer</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>>
+               <form name="dcForm" action="EeditC" method=""post>
+            <input type="text" name="cusID">  
+            <input id="Rec" type="submit" value="Edit Customer" />
+        </form> 
+    </li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>>
+        <form name="dcForm" action="EdelC" method=""post>
+            <input type="text" name="cusID">  
+            <input id="Rec" type="submit" value="Delete Customer" />
+        </form> 
+    </li>
     <li><button class="transcation" onclick="window.open('index.jsp','_self');">Logout</button></li>
     
     

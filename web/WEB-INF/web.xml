@@ -56,6 +56,10 @@
         <servlet-name>MdelE</servlet-name>
         <servlet-class>users.MdelE</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EdelC</servlet-name>
+        <servlet-class>users.EdelC</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/UserAddServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>MdelE</servlet-name>
         <url-pattern>/MdelE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EdelC</servlet-name>
+        <url-pattern>/EdelC</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
