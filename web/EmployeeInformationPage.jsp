@@ -122,7 +122,7 @@
             <!-- 加翻form action  -->
             <h3> Add a new employee</h3>
             <p> Please enter the following information about the new employee:</p>
-            <form action =" ">
+            <form action ="MaddE" method = "post">
                 <label> Positions: </label> 
                 <select id ="new_employee_position">
                     <option value ="Manager">Manager</option>
