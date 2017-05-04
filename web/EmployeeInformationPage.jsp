@@ -13,23 +13,42 @@
         <title>JSP Page</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script>
+        $(document).ready(function()
+        {
+//            $("#add_movie").click(function(event){
+//                $('div').hide();
+//                document.getElementById("add_movie_div").style.display = "inline";
+//            });
+            
+            $("button").click(function()
+            {
+                 //alert($(this).val());
+                 $('div').hide();
+                 document.getElementById($(this).val()).style.display = "inline";s
+            });
+            
+            });
+ 
+        
+    </script>
     </head>
     <body>
        
-    <div class = "left_sidebar">    
+       
     <ul class = "action_list">
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_movie" value = "game1">Add Movie</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_movie" value = "game2">Edit Movie</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_movie" value = "game3">Delete Movie</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_employee" value = "game4">Add Employee</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_employee" value = "game4">Edit Employee</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_employee" value = "game4">Delete Employee</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "obtain_sales_report" value = "game4">Obtain Sales Report</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_all_movies" value = "game4">List all movies</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_movies_by" value = "game4">List movie rentals</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_best_rep" value = "game4">See Customer Rep that oversaw most rentals</button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_most_active_customers" value = "game4">View most active customers </button></li>
-    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_most_actively_rented_movie" value = "game4">View most actively rented movies </button></li>
+    <li> <button class = "transcation" id = "add_movie" value = "add_movie_div">Add Movie</button></li>
+    <li><button class = "transcation" id = "edit_movie" value = "edit_movie_div">Edit Movie</button></li>
+    <li><button class = "transcation" id = "delete_movie" value = "delete_movie_div">Delete Movie</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "add_employee" value = "add_employee_div">Add Employee</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "edit_employee" value = "edit_employee_div">Edit Employee</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "delete_employee" value = "delete_employee_div">Delete Employee</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "obtain_sales_report" value = "sales_report_div">Obtain Sales Report</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_all_movies" value = "lists_of_all_movies_div">List all movies</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "list_movies_by" value = "list_of_movie_rentals">List movie rentals</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_best_rep" value = "list_of_customer_rep_who_oversaw_most_rental">See Customer Rep that oversaw most rentals</button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_most_active_customers" value = "list_of_active_customers">View most active customers </button></li>
+    <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Customer Rep")) {%> hidden <%} %>><button class = "transcation" id = "view_most_actively_rented_movie" value = "list_of_active_rented_movies">View most actively rented movies </button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Confirm orders</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Produce customer mailing lists</button></li>
     <li <% if(((Employee)session.getAttribute("employeeData")).getPosition().equals("Manager")) {%> hidden <%} %>><button class = "transcation" id = "confirm_order" onclick="window.open('confirmOrder.jsp','_self');">Produce a list of movie suggestions for a given customer</button></li>
@@ -39,10 +58,10 @@
     
     
     </ul> 
-    </div>
+   
         
        
-     <div id = "add_movie_div" style ="display:inline">
+     <div id = "add_movie_div" style ="display:none">
             <!-- 加翻form action  -->
             <h3> Add a new movie to the list</h3>
             <p> Please enter the following information about the movie:</p>
@@ -70,7 +89,7 @@
         <br/>
         <br/>
         
-        <div id = "edit_movie_div" style ="display:inline">
+        <div id = "edit_movie_div" style ="display:none">
             <h3>Edit an existing movie information</h3>
             <p> Please enter the following information about the movie:</p>
              <form action =" ">
@@ -87,7 +106,7 @@
  
               </form>
         </div>
-         <div id = "delete_movie_div" style ="display:inline">
+         <div id = "delete_movie_div" style ="display:none">
              <h3>Delete an existing movie from the list</h3>
             <p> Please enter the following information about the movie:</p>
              <form action =" ">
@@ -99,7 +118,7 @@
               </form>
         </div>
         
-        <div id = "add_employee_div" style ="display:inline">
+        <div id = "add_employee_div" style ="display:none">
             <!-- 加翻form action  -->
             <h3> Add a new employee</h3>
             <p> Please enter the following information about the new employee:</p>
@@ -213,7 +232,7 @@
              </form>
         </div>  <!-- End of add employee div   -->
         
-        <div id ="edit_employee_div">
+        <div id ="edit_employee_div" style="display:none">
              <h3>Edit information of an employee</h3>
             <p> Please enter the following information about the new changes:</p>
              <form action =" ">
@@ -243,7 +262,7 @@
             
         </div>
         
-        <div id = "delete_employee_div" style ="display:inline">
+        <div id = "delete_employee_div" style ="display:none">
              <h3>Delete an employee from the list</h3>
             <p> Please enter the following information about the employee:</p>
              <form action =" ">
@@ -265,6 +284,7 @@
         <div id="list_of_active_customers" style="display:none"></div>
         <!-- list of most actively rented movie -->
          <div id="list_of_active_rented_movies" style="display:none"></div>
-        
+        <!-- list of customer rep who oversaw most rental -->
+        <div id="list_of_customer_rep_who_oversaw_most_rental" style="display:none"></div>
     </body>
 </html>
