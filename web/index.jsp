@@ -42,6 +42,8 @@
         
         <span style="font-size: 9pt">
             <br />
+            <a href="https://drive.google.com/file/d/0BwqcoEnny-9IaGI4Wno3aF9uQ1k/view">User's Guidebook</a><br/>
+            <a href="https://drive.google.com/file/d/0BwqcoEnny-9IelIyTkpYV3QtU1U/view">Programmer's Guidebook</a><br/>
             Group Trappist-1f, 2017<br />
             Department of Computer Science, State University of New York at Stony Brook</span></strong></span><span
                 style="font-size: 9pt"> </span>
